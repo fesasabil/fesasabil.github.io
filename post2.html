@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+      <title>azzaid Blog - linux </title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">azzaid Creative</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="post.html">Sample Post</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('img/command-line.jpg')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-heading">
+              <h1>Linux</h1>
+              <h2 class="subheading">Beberapa Command line di linux</h2>
+              <span class="meta">Posted by
+                <a href="#">azzaid</a>
+                on October 10, 2018</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+   <h3>1. grep command</h3>
+<p>Mencari file untuk baris yang cocok dengan pola tertentu.</p>
+<p>Mencari string tertentu dalam sebuah file (case in-sensitive search)</p>
+<pre><strong>$ grep -i "the" file_demo</strong></pre>
+<p>Mencetak garis yang cocok dengan apa yang dicari</p>
+<pre><strong>grep -A 3 -i "contoh" text_demo</strong></pre>
+<p>Mencari string yang diberikan dalam semua file secara rekursif</p>
+<pre><strong>$ grep -r "jurnalweb" *</strong></pre><br>
+
+<h3>2. tar command</h3>
+<p>Tape Archiver</p>
+<p>Membuat file arsip baru</p>
+<pre><strong>$ tar cvf nama_file_arsip.tar namadirektori/</strong></pre>
+<p>Mengekstrak file tar</p>
+<pre><strong>$ tar xvf nama_arsip.tar</strong></pre>
+<p>Melihat file tar</p>
+<pre><strong>$ tar tvf nama_arsip.tar</strong></pre>
+
+<h3>3. find command</h3>
+<p>Mencari file yang memenuhi kriteria yang diinginkan</p>
+<p>Mencari file berdasarkan nama file (case-sensitive)</p>
+<pre><strong># find -iname "MyCProgram.c</strong></pre>
+<p>Perintah untuk mengeksekusi file yang ditemukan berdasarkan perintah find</p>
+<pre><strong>$ find -iname "MyCProgram.c" -exec md5sum {} \;</strong></pre>
+<p>Mencari semua file kosong/empty pada folder/direktori home
+
+</p>
+<pre><strong># find ~ -empty</strong></pre>
+
+<h3>4. ssh command</h3>
+<p>Secure Shell client (remote login program)</p>
+<p>Login ke sebuah host secara remote</p>
+<pre><strong>ssh -l johndoe remotehost.example.com</strong></pre>
+<p>Debug SSH client</p>
+<pre><strong>ssh -v -l johndoe remotehost.example.com</strong></pre>
+<p>Menampilkan versi SSH Client</p>
+<pre><strong>$ ssh -V</strong></pre>
+<pre><strong>OpenSSH_3.9p1, OpenSSL 0.9.7a Feb 19 2003</strong></pre>
+
+<h3>5. sed command</h3>
+<p>Stream Editor</p>
+<p>Ketika anda mencopy file DOS ke Linux, kamu akan menemukan \r\n disetiap baris. Contoh ini mengubah format file DOS ke format Unix menggunakan perintah sed.</p>
+<pre><srong>$sed 's/.$//' filename</srong></pre>
+<p>Cetak isi file secara terbalik</p>
+<pre><strong>$ sed -n '1!G;h;$p' jurnalweb.txt</strong></pre>
+<p>Tambahkan nomor baris untuk semua baris yang tidak kosong dalam sebuah file</p>
+<pre><strong>$ sed '/./=' jurnalweb.txt | sed 'N; s/\n/ /'</strong></pre>
+
+<h3>6. awk command</h3>
+<p>Mencari dan mengganti teks, database sort / validate / index</p>
+<p>Menghapus duplikasi file menggunakan perintah awk</p>
+<pre><strong>$ awk '!($0 in array) { array[$0]; print }' temp</strong></pre>
+<p>Cetak semua baris dari /etc/passwd yang memiliki uid dan gid sama
+</p>
+<pre><strong>$awk -F ':' '$3==$4' passwd.txt</strong></pre>
+<p>Mencetak field tertentu dari sebuah file</p>
+<pre><strong>$ awk '{print $2,$5;}' karyawan.txt</strong></pre>
+
+<h3>7. sort command</h3>
+<p>Mengurutkan file teks</p>
+<p>sort/ Mengurutkan file secara ascending (dari terkecil ke besar)</p>
+<pre><strong>Sort / Mengurutkan file secara ascending (dari terkecil ke besar)</strong></pre>
+<p>Sort/Mengurutkan secara descending (dari besar ke kecil)</p>
+<pre><strong>$ sort -r names.txt</strong></pre>
+<p>Menampilkan file passwd berdasarkan kolom ke-3</p>
+<pre><strong>$ sort -t: -k 3n /etc/passwd | more</strong></pre>
+
+<h3>8. export command</h3>
+<p>Set variabel lingkungan</p>
+<p>Melihat environtment variabel yang terkait oracle</p>
+<pre><strong>$ export | grep ORACLE</strong></pre>
+<pre><strong>declare -x ORACLE_BASE="/u01/app/oracle"</strong></pre>
+<pre><strong>declare -x ORACLE_HOME="/u01/app/oracle/product/10.2.0"</strong></pre>
+<pre><strong>declare -x ORACLE_SID="med"</strong></pre>
+<pre><strong>declare -x ORACLE_TERM="xterm"</strong></pre>
+<p>Mengekpor sebuah environtment variabel</p>
+<pre><strong>$ export ORACLE_HOME=/u01/app/oracle/product/10.2.0</strong></pre>
+
+<h3>9. ls command</h3>
+<p>List informasi tentang file</p>
+<p>Display filesize in human readable format (e.g. KB, MB etc.,)</p>
+<pre><strong>$ ls -lh</strong></pre>
+<p>Urutkan File Berdasarkan Perubahan Waktu Terakhir (Pada Reverse Order) Menggunakan ls -ltr</p>
+<pre><strong>$ ls -ltr</strong></pre>
+<p>Klasifikasi visual File Dengan Menggunakan Karakter Khusus ls -F</p>
+<pre><strong>$ ls -F</strong></pre>
+
+<h3>10. cd command</h3>
+<p>Mengganti Directori</p>
+<p>Gunakan “cd -” untuk beralih antara dua direktori terakhir Berpindah ke direktori jurnal</p>
+<pre><strong>cd jurnal</strong></pre>
+<p>kembali ke direktori sebelumnya</p>
+<pre><strong>cd ../</strong></pre>
+<p>Berpindah ke direktori home user anda</p>
+<pre><strong>~ /</strong></pre>
+     
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+               <li class="list-inline-item">
+                <a href="https://www.facebook.com/mikel.uuppz">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://github.com/fesasabil">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+                <li class="list-inline-item">
+                <a href="https://www.instagram.com/sabili.feaslucu">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <p class="copyright text-muted">Copyright &copy; azzaid Website 2018</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/clean-blog.min.js"></script>
+
+  </body>
+
+</html>
