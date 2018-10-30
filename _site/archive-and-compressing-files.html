@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-      <title>azzaid Blog - sintaks CSS </title>
+      <title>azzaid Blog - Transfer Files Securely Via the Network </title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -53,17 +53,17 @@
     </nav>
 
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('img/css.png')">
+    <header class="masthead" style="background-image: url('img/transfer2.jpeg')">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="post-heading">
-              <h1>Mengenal property di CSS</h1>
-              <h2 class="subheading">Beberapa property di CSS</h2>
+              <h1>Transfer Files Securely Via the Network</h1>
+              <h2 class="subheading">Tata cara Transfer files</h2>
               <span class="meta">Posted by
                 <a href="#">azzaid</a>
-                on October 20, 2018</span>
+                on October 29, 2018</span>
             </div>
           </div>
         </div>
@@ -75,66 +75,29 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
-        <h3>1. Background-image</h3>
-              <p>Alamat gambar yang sudah di aploud.</p>
+        <h3>Langkah pertama</h3>
+            <p>Pastikan file dan zsh sudah ada,jika zsh belum ada maka anda bisa menginstallnya dengan mengikuti command dibawah :</p>
+         <p style="text-align: justify;"><code>[fesa@fesa /]</code><code>~ sudo apt-get install zsh</code></p>
               
-        <h3>2. Background-repeat</h3>
-              <p>Gambar diulang dalam halaman.</p>
+        <h3>Langkah kedua</h3>
+            <p>jika zsh sudah terinstall,maka selanjutnya pastikan user pada file anda bukan user root.kita bisa mengubahnya dengan mengikuti command dibawah :</p>
+              <p style="text-align: justify;"><code>[fesa@fesa /]</code><code>~ chown -R (nama user)(nama user) (nama file /folder)</code></p>
+              <p>contoh command sebelum dijalankan :</p>
+            <img src="img/transfer.png" alt="" height="300px" width="600px">
+              <p> setelah command dijalankan :</p>
+              <img src="img/transfer1.png" alt="" height="300px" width="600px">
+            
+        <h3>Langkah ketiga</h3>
+              <p>sekarang jika semuanya sudah diubah maka sekarang kita bisa mengirim file ke server satu lagi dengan command berikut : </p>
+              <p>1. kita akan menggunakan scp.<strong>scp</strong>adalah command line yang hanya bisa untuk transfer satu file dan belum tentu permissionsnya ikut ke ganti.</p>
+            <p>contoh command linenya :</p>
+                <p style="text-align: justify;"><code>[fesa@fesa /]</code><code>~ scp (nama file) (nama user)@(ip server yang ingin dikirimi file):/(nama directory)/(nama directory</code></p>
               
-        <h3>3. font-family</h3>
-              <p>Jenis font.</p>
+              <p>2. kita akan menggunakan rsync.<strong>rsync</strong> adalah command line yang bisa untuk transfer banyak file dan permissionsnya ikut ke ganti atau bisa disebut juga pembackupan.</p>
+              <p>contoh command linenya :</p>
+               <p style="text-align: justify;"><code>[fesa@fesa /]</code><code>~ rsync (nama file) (nama user)@(ip server yang ingin dikirimi file):/(nama directory)/(nama directory</code></p>
               
-        <h3>4. Font-size</h3>
-              <p>Mengatur ukuran font.</p>
-              
-        <h3>5. Font-style</h3>
-              <p>Mengatur style font.</p>
-              
-        <h3>6. Font-weight</h3>
-              <p>Mengatur ketebalan font.</p>
-              
-        <h3>7. Text-decoration</h3>
-              <p>Mengatur penampilan teks.</p>
-              
-        <h3>8. Text-transform</h3>
-              <p>Menampilkan text huruf besar</p>
-              
-        <h3>9. Text-align</h3>
-              <p>Mengatur tata letak teks.</p>
-              
-        <h3>10. a:link</h3>
-              <p>Keadaan awal link</p>
-              
-        <h3>11. a:hover</h3>
-              <p>Keadaan link saat dikenai mouse</p>
-              
-        <h3>12. a:active</h3>
-              <p>Keadaan link saat di klik</p>
-              
-        <h3>13. a:visited</h3>
-              <p>Keadaan link setelah dikunjungi</p>
-              
-        <h3>14. Border-radius</h3>
-              <p>Garis melemgkung disemua sisi.</p>
-              
-        <h3>15. border-top-left-radius</h3>
-              <p>Garis melengkung pada sisi atas dan kiri.</p>
-              
-        <h3>16. border-top-right-radius</h3>
-              <p>Garis melengkung pada sisi atas dan kanan.</p>
-              
-        <h3>17. border-bottom-right-radius</h3>
-              <p>Garis melengkung pada sisi bawah dan kanan.</p>
-              
-        <h3>18. border-bottom-left-radius</h3>
-              <p>Garis melengkung pada sisi bawah dan kiri.</p>
-              
-        <h3>19. Margin</h3>
-              <p>kode yang mengatur seleksi batas jarak luar, seperti misal memberi jarak antara header blog dengan batas atas, bawah, kanan dan kiri dari kontent yang ada pada struktur header di sekitarnya.</p>
-              
-        <h3>20. Padding</h3>
-              <p>kode yang mengatur seleksi batas jarak dalam seperti memberi jarak pada header dengan batas tepi header misalnya padding:5px; jadi jarak header dengan batas tepinya 5px ke dalam.</p>
-              
+        
           </div>
         </div>
       </div>
