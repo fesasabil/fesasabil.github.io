@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-      <title>azzaid Blog - Sintaks HTML </title>
+      <title>azzaid Blog - Hard link and Soft link</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -53,17 +53,17 @@
     </nav>
 
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('img/html.png')">
+    <header class="masthead" style="background-image: url('img/hard-link.jpg')">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="post-heading">
-              <h1>Mengenal sintaks HTML</h1>
-              <h2 class="subheading">Beberapa sintaks HTML</h2>
+              <h1>Hard link and Soft link</h1>
+              <h2 class="subheading">Pengertian dan perbedaan Hard link and Soft link</h2>
               <span class="meta">Posted by
                 <a href="#">azzaid</a>
-                on October 18, 2018</span>
+                on October 31, 2018</span>
             </div>
           </div>
         </div>
@@ -75,55 +75,32 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
-        <h3>1. Tag &nbsp; <td width="167">&lt;I&gt; &lt;/I&gt;</td></h3>
-        <p>Berfungsi untuk Menyisipkan tulisan miring atau Membuat tulisan menjadi miring.</p>
-              
-        <h3>2. Tag  &nbsp; <td width="167">&lt;u&gt; &lt;/u&gt;</td></h3>
-        <p>Menyisipkan tulisan bergaris bawah atau Membuat tulisan menjadi bergaris bawah.</p>
-              
+        <h3>Pengertian Hardlink and Softlink :</h3>
+              <p><I>Hardlinks dan Softlinks/symbolic links</I> adalah bahas sederhanya short cut (jalan pintas yang digunakan untuk menjalankan suatu perintah pada komputer. contoh pada windows biasanya terdapat didesktop sebuah gambar yang jika diklik akan ngelink ke suatu program, bisa  juga diset ke suatu folder).</p>
+         
+        <h3>Perbedaan antara Hardlink and Softlink :</h3>
+            <ol>
+              <li>Hardlink : jika file sumber dihapus maka Hardlinknya akan tetap jalan.</li><br>
+              <li>Softlink : jika file sumber dihapus maka Softlinknya akan error atau tidak akan berjalan.</li>
+              </ol>
              
-        <h3>3. Tag &nbsp; <td width="167"> &lt;b&gt; &lt;/b&gt;</td></h3>
-        <p>Menyisipkan tulisan tebal atau Membuat tulisan menjadi tebal.</p>
+        <p>Untuk membuat Hardlink maka commandnya seperti ini :</p>
+            <pre><strong>$ ln  (nama file) (nama link)</strong></pre>
+            
+        <p>Untuk membuat Softlink maka commandnya seperti ini :</p>
+            <pre><strong>$ ln -s (nama file) (nama link)</strong></pre>
+        <p>Untuk melihat file dengan inode atau i-number atau inode-number (inode) :</p>
+             <pre><strong>$ ls -ali</strong></pre>
+        <p>Untuk menghapus link kita bisa menggunakan 2 cara :</p>
+              <ol>
+              <li>Menggunakan unlink :</li>
+              <pre><strong>$ unlik (nama link)</strong></pre>
+              <li>Menggunakan rm :</li>
+              <pre><strong>$ rm (nama link)</strong></pre></ol>
               
-        <h3>4. Tag &nbsp; <td width="167"> &lt;li&gt; &lt;/li&gt;</td></h3>
-        <p>Menyisipkan bullet.</p>
-              
-        <h3>5. Tag &nbsp; <td width="167"> &lt;marquee&gt; &lt;/marquee&gt;</td></h3>
-        <p>Menyisipkan tulisan berjalan .  “welcome to website” bergerak dari kiri ke kanan atau dari atas ke bawah.</p>
-        
-        <h3>6. Tag &nbsp; <td width="167"> &lt;blink&gt; &lt;/blink&gt;</td></h3>
-        <p>Menyisipkan tulisan berkedip kedip.</p>  
-              
-        <h3>7. Tag &nbsp; <td width="167"> &lt;center&gt; &lt;/center&gt;</td></h3>
-        <p>Menyisipkan tulisan dalam bentuk ratah tengan atau Membuat tulisan menjadi rata tengah.</p>
-              
-        <h3>8. Tag &nbsp; <td width="167"> &lt;title&gt; &lt;/title&gt;</td></h3>
-        <p>Menyisipkan title html atau untuk membuat judul HTML.</p> 
-              
-        <h3>9. Tag &nbsp; <td width="167"> &lt;head&gt; &lt;/head&gt;</td></h3>
-        <p>Menyisipkan bagian head pada sebuah HTML.</p> 
-              
-        <h3>10. Tag &nbsp; <td width="167"> &lt;cite&gt; &lt;/cite&gt;</td></h3>
-        <p>Mendefinisikan kutipan.</p>
-              
-        <h3>11. Tag &nbsp; <td width="167"> &lt;abbr&gt; &lt;/abbr&gt;</td></h3>
-        <p>Digunakan untuk menguraikan satu ungkapan yang disingkat dan Anda dapat memberikan informasi bermanfaat kepada penelusur-penulusur page source(halaman sumber kode) / pembaca layar, sistem terjemahan dan mesin pencari yang berasal dari singkatan yang sudah diuraikan, tetapi saat di browser uraian tersebut tidak akan tampil dan hanya sebagai informasi saja.</p>
-              
-        <h3>12. Tag &nbsp; <td width="167"> &lt;button&gt; &lt;/button&gt;</td></h3>
-        <p>Mendefinisikan sebuah tombol diklik.</p>
-              
-        <h3>13. Tag &nbsp; <td width="167"> &lt;span&gt; &lt;/span&gt;</td></h3>
-        <p>Mendefinisikan sebuah section dalam dokumen.</p>
-              
-        <h3>14. Tag &nbsp; <td width="167"> &lt;strike&gt; &lt;/strike&gt;</td></h3>
-        <p>Untuk memberi garis tengah pada teks/mencoret teks, fungsi tag ini sama dengan tag &lt;del&gt;</p>
-              
-        <h3>15. Tag &nbsp; <td width="167"> &lt;samp&gt; &lt;/samp&gt;</td></h3>
-        <p>Mendefinisikan contoh keluaran dari program computer.</p>
-              
-              
-        
-          </div>
+        <p>Jadi mungkin hanya itu dari saya.semoga bermanfaat untuk kawan-kawan,jika ada kesalahan ataupun ingin mengoreksi silahkan DM ke akun saya yang berada di bawah.</p>
+             
+         </div>
         </div>
       </div>
     </article>
