@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+      <title>azzaid Blog - Bootloaders</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">azzaid Creative</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Technology.html">Sample Post</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('img/bootloaders.png')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-heading">
+              <h1>Mengenal Bootloaders</h1>
+              <h2 class="subheading">Pengertian dan fungsi Bootloaders</h2>
+              <span class="meta">Posted by
+                <a href="#">azzaid</a>
+                on November 5, 2018</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+        <h3>Pengertian Bootloaders :</h3>
+              <p><I>Bootloaders</I> adalah sebuah program yang mampu memberikan aksesibilitas untuk memodifikasi sistem, memverfikasi intergritas OS, menyediakan media untuk mengupdate perangkat, serta sebuah program yang berfungsi untuk memuat OS ketika hp dalam proses booting,selain itu bootloader itu memiliki 2 keadaan sob, yaitu locked (terkunci), dan unlocked (terbuka).</p>
+        <h4>1. locked Bootloaders(terkunci) :</h4>
+            <p>keadaan di mana bootloader masih dalam keadaan terkunci/tertutup, dan jika bootloader masih terkunci, maka aksesbilitas hp sobat masih sangat terbatas, atau dengan kata lain, belum bisa di pasangi custom rom, dan custom recovery, pokoknya masih terbatas banget deh.</p>
+        
+            
+        <h4>2. Unlock Bootloader (Bootloader terbuka) :</h4>
+           <p>kondisi dimana bootloader sudah dalam keadaan terbuka, sehingga aksesibilitas hp menjadi tidak terbatas atau dengan kata lain, HP sobat sudah bisa di root,di pasangi tweak, custom ROM, custom recovery.</p>
+              
+        <h3>Fungsinya :</h3>
+              <p>Untuk melakukan booting pada sebuah computer maupun handphone.</p>
+                  
+        <h4>Mengonfigurasi Bootloader :</h4>
+              <p>Mungkin ini telah berfungsi, namun akan lebih baik jika mengetahui bagaimana mengonfigurasi dan menginstall bootloader jika dia menghilang dari Master Boot Record. Hal ini dapat terjadi setelah instalasi sistem operasi lainnya, seperti Windows. Informasi berikut dapat pula membantu Anda untuk memodifikasi konfigurasi bootloader jika diperlukan.</p>
+              <p>Master Boot Record (MBR) menempati 512 byte pertama pada hard disk pertama, dan merupakan yang pertama dimuat oleh BIOS untuk mengambil alih kontrol ke sebuah program yang dapat mem-boot sistem operasi yang diinginkan. Umumnya, sebuah bootloader terinstall di MBR, menghapus konten sebelumnya.</p>
+              
+        <h4>Mengidentifikasi Cakram :</h4>
+              <p>Konfigurasi bootloader harus mengidentifikasi perangkat keras yang berbeda dan partisinya. Linux menggunakan berkas khusus “block” yang tersimpan dalam direktori<strong>/dev/</strong>, untuk tujuan ini. Sejak Debian Squeeze, pola penamaan untuk hard drive telah disatukan oleh kernel Linux, dan semua hard drive (IDE/PATA, SATA, SCSI, USB, IEEE 1394) sekarang direpresentasikan oleh <strong>/dev/sd*</strong>.</p>
+              <p>Setiap partisi direpresentasikan oleh nomornya pada disk di mana dia berasa: misalnya,<strong>/dev/sda1</strong> merupakan partisi pertama pada disk pertama, dan <strong>/dev/sdb3</strong>adalah partisi ketiga pada disk kedua.</p>
+              <p>Arsitektur PC (atau "i386", termasuk saudara sepupunya "amd64" yang lebih muda) telah lama terbatas untuk menggunakan format tabel partisi "MS-DOS", yang hanya mengizinkan empat partisi "primer" per disk. Untuk melalui batasan ini, salah satunya harus dibuat sebagai partisi "perluasan", dan kemudian dapat memuat partisi tambahan "sekunder". Partisi sekunder ini harus bernomor dari 5. Maka partisi sekunder pertama dapat berupa <strong>/dev/sda5</strong>, diikuti oleh <strong>/dev/sda6</strong>, dst.</p>
+              <p>Keterbatasan lain dari format tabel partisi MS-DOS adalah itu hanya mengizinkan disk berukuran sampai dengan 2 TiB, yang menjadi masalah nyata dengan disk-disk terkini.</p>
+              <P>Suatu format tabel partisi baru bernama GPT melonggarkan kendala ini pada banyaknya partisi (itu mengizinkan sampai dengan 128 partisi ketika memakai setelan standar) dan atas ukuran disk (sampai dengan 8 ZiB, yang lebih dari 8 miliar terabita). Bila Anda hendak membuat banyak partisi fisik pada disk yang sama, maka Anda mesti memastikan bahwa Anda membuat tabel partisi dalam format GPT ketika mempartisi disk Anda.</P>
+              <p>Tidak mudah untuk mengingat cakram apa yang terhubung dengan SATA controller, atau pada posisi ketiga dalam chain SCSI, khususnya sejak penamaan hard drive yang tertancap (termasuk di antaranya kebanyakan disk SATA dan disk eksternal) dapat berubah dari satu boot ke lainnya. Untungnya, udev membuat tambahannya pada <strong>/dev/sd*</strong>, tautan simbolis dengan nama tetap, yang dapat Anda gunakan kemudian jika Anda ingin mengidentifikasi hard drive dengan cara yang tidak membingungkan. Tautan simbolis ini tersimpan di <strong>/dev/disk/by-id</strong>. Pada mesin dengan dua cakram fisik, misalnya, dapat ditemukan sebagai berikut:</p>
+              <img src="img/boot.png" alt="" height="300px" width="500px">
+              <p>Catat bahwa beberapa disk terdaftar beberapa kali (karena secara simultan berlaku sebagai disk ATA dan disk SCSI), namun informasi yang relevan utamanya dalam model dan nomor seri disk, yang dapat Anda temukan berkas peripheralnya.</p>
+              
+              <h4> Konfigurasi GRUB 2 :</h4>
+              <p>GRUB (GRand Unified Bootloader) lebih baru. Tidak perlu menjalankannya setiap pembaruan kernel; GRUB tau bagaimana cara membaca sistemberkas dan menemukan lokasi kernel pada cakram dengan sendirinya. Untuk menginstallnya pada MBR pada cakram pertama, ketikkan :</p>
+              <pre><strong>$ grub-install /dev/sda.</strong></pre>
+              <p>Konfigurasi GRUB 2 disimpan dalam <strong>/boot/grub/grub.cfg</strong>, namun berkas ini (di Debian) dibuat oleh lainnya. Berhati-hatilah untuk tidak memodifikasinya secara manual, karena modifikasi lokal akan hilang ketika dijalankan update-grub (yang dapat terjadi ketika memerbarui berbagai paket). Modifikasi paling umum berkas<strong>/boot/grub/grub.cfg</strong> (untuk menambahkan parameter baris perintah ke kernel atau mengganti durasi menu ditampilkan, misalnya) dibuat melalui variabel dalam <strong>/etc/default/grub</strong>. Untuk menambahkan masukan ke menu, Anda dapat membuat berkas <strong>/boot/grub/custom.cfg</strong> atau memodifikasi berkas <strong>/etc/grub.d/50_custom</strong>. Untuk konfigurasi yang lebih kompleks, Anda dapat mengubah berkas-berkas lain dalam <strong>/etc/grub.d</strong>, atau menambahkan ke mereka; skrip-skrip ini mesti mengembalikan snippet konfigurasi, mungkin dengan menggunakan program eksternal. Skrip ini yang akan memerbarui daftar kernel untuk di-boot: <strong>10_linux</strong> menangani kernel Linux yang terinstall; <strong>20_linux_xen</strong> menangani sistem virtual Xen, dan <strong>30_os-prober</strong> mendaftar sistem operasi lain (Windows, OS X, Hurd).</p>
+              
+    
+        <h4>Referensi :</h4>
+              <ol>
+                  <li><a href="http://cuman-android.blogspot.com">http://cuman-android.blogspot.com</a></li>
+                  <li><a href="https://debian-handbook.info">https://debian-handbook.info</a></li>
+              </ol>
+            
+        
+              <h4><center>Terima Kasih</center></h4>
+             
+         </div>
+        </div>
+      </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+               <li class="list-inline-item">
+                <a href="https://www.facebook.com/mikel.uuppz">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://github.com/fesasabil">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+                <li class="list-inline-item">
+                <a href="https://www.instagram.com/sabili.feaslucu">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <p class="copyright text-muted">Copyright &copy; azzaid Website 2018</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/clean-blog.min.js"></script>
+
+  </body>
+
+</html>
