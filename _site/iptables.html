@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+      <title>azzaid Blog -  Networking</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">azzaid Creative</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Technology.html">Sample Post</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('img/iptables.png')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-heading">
+              <h1>Mengenal Iptables</h1>
+              <h2 class="subheading">Pengertian dan fungsi Iptables</h2>
+              <span class="meta">Posted by
+                <a href="#">azzaid</a>
+                on November 6, 2018</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+        <h3>Pengertian Iptables :</h3>
+              <p><I>Iptables </I> adalah modul userpace yang berinteraksi pada baris perintah untuk memasukkan aturan firewall ke tabel yang telah ditetapkan. </p>
+              <p>Iptables itu menggunakan konsep alamat IP, protokol (tcp, udp, icmp) dan juga port.<br><br>
+              Iptables menggunakan chain (INPUT, OUTPUT, dan FORWARD) apabila data yang diproses melalui paket ip akan dilewati dalam tabel penyaringan terlebih dahulu<br><br>
+              jadi saat sebuah paket sampai pada sebuah lingkaran, maka disitulah terjadi proses penyaringan. Chain akan memutuskan nasib paket tersebut apabila keputusannya adalah DROP, maka paket tersebut akan di-drop, tetapi jika chain memutuskan untukACCEPT, maka paket akan dilewatkan melalui diagram tersebut.</p>
+         
+        <h3>Fungsi Iptables :</h3>
+              <p>Untuk memberitahu apa yang harus dilakukan terhadap lanjutan sintaks perintah, dan dilakukan untuk penambahan atau penghapusan sesuatu dari tabel atau yang lain.</p>
+            
+        <h4>Command pada baris perintah IPTables akan memberitahu apa yang harus dilakukan terhadap lanjutan sintaks perintah :</h4>
+            <ol>
+                <li><strong>-A or - -append =</strong> Perintah ini menambahkan aturan pada akhir chain. Aturan akan ditambahkan di akhir baris pada chain yang bersangkutan, sehingga akan dieksekusi terakhir.</li><br>
+                <li><strong>-D or – -delete =</strong> Perintah ini menghapus suatu aturan pada chain. Dilakukan dengan cara menyebutkan secara lengkap perintah yang ingin dihapus atau dengan menyebutkan nomor baris dimana perintah akan dihapus.</li><br>
+                <li><strong>-R or - -replace = </strong> Penggunaannya sama seperti - -delete, tetapi command ini menggantinya dengan entry yang baru.</li><br>
+                <li><strong>-I or - -insert =</strong>  Memasukkan aturan pada suatu baris di chain. Aturan akan dimasukkan pada baris yang disebutkan, dan aturan awal yang menempati baris tersebut akan digeser ke bawah. Demikian pula baris-baris selanjutnya.</li><br>
+                <li><strong>-L or - -list =</strong> Perintah ini menampilkan semua aturan pada sebuah tabel. Apabila tabel tidak disebutkan, maka seluruh aturan pada semua tabel akan ditampilkan, walaupun tidak ada aturan sama sekali pada sebuah tabel. Command ini bisa dikombinasikan dengan option –v (verbose), -n (numeric) dan –x (exact).</li><br>
+                <li><strong>-F or – -flush =</strong> Perintah ini mengosongkan aturan pada sebuah chain. Apabila chain tidak disebutkan, maka semua chain akan di-flush.</li><br>
+                <li><strong>-N or - -new-chain =</strong> Perintah tersebut akan membuat chain baru.</li><br>
+                <li><strong>-X or – -delete-chain =</strong> Perintah ini akan menghapus chain yang disebutkan. Agar perintah di atas berhasil, tidak boleh ada aturan lain yang mengacu kepada chain tersebut.</li><br>
+                <li><strong>-P or – -policy =</strong> Perintah ini membuat kebijakan default pada sebuah chain. Sehingga jika ada sebuah paket yang tidak memenuhi aturan pada baris-baris yang telah didefinisikan, maka paket akan diperlakukan sesuai dengan kebijakan default ini.</li><br>
+                <li><strong>-E or - -rename-chain =</strong> Perintah ini akan merubah nama suatu chain.</li><br>
+                <li><strong>-n or - -numeric =</strong>  Memberikan output yang berbentuk angka. Alamat IP dan nomor port akan ditampilkan dalam bentuk angka dan bukan hostname ataupun nama aplikasi/servis.</li><br>
+                <li><strong>- -line-number =</strong> Akan menampilkan nomor dari daftar aturan. Hal ni akan mempermudah bagi kita untuk melakukan modifikasi aturan, jika kita mau meyisipkan atau menghapus aturan dengan nomor tertentu.</li><br>
+                <li><strong>- -modprobe =</strong>  Memerintahkan IPTables untuk memanggil modul tertentu. Bisa digunakan bersamaan dengan semua command.</li><br>
+                <li><strong>-p or - -protocol =</strong> Digunakan untuk mengecek tipe protokol tertentu. Contoh protokol yang umum adalah TCP, UDP, ICMP dan ALL. Daftar protokol bisa dilihat pada /etc/protocols. Tanda inversi juga bisa diberlakukan di sini, misal kita menghendaki semua protokol kecuali icmp, maka kita bisa menuliskan – -protokol ! icmp yang berarti semua kecuali icmp</li><br>
+                <li><strong>-s or – -src or- -source =</strong> Kriteria ini digunakan untuk mencocokkan paket berdasarkan alamat IP asal. Alamat di sini bisa berberntuk alamat tunggal seperti 192.168.0.10, atau suatu alamat network menggunakan netmask misal 192.168.0.0/255.255.255.0, atau bisa juga ditulis 192.168.0.0/24 yang artinya semua alamat 192.168.0.x. Kita juga bisa menggunakan inversi.</li><br>
+                <li><strong>-d or- -dst or - -destination =</strong> Digunakan untuk mecocokkan paket berdasarkan alamat tujuan. Penggunaannya sama dengan match –src.</li><br>
+                <li><strong>-i or- -in-interface = </strong> Match ini berguna untuk mencocokkan paket berdasarkan interface di mana paket datang. Match ini hanya berlaku pada chain INPUT, FORWARD dan PREROUTING</li><br>
+                <li><strong>-o or- -out-interface =</strong>  Berfungsi untuk mencocokkan paket berdasarkan interface di mana paket keluar. Penggunannya sama dengan – -in-interface. Berlaku untuk chain OUTPUT, FORWARD dan POSTROUTING</li><br>
+                <li><strong>- -sport or- -source-port =</strong> Match ini berguna untuk mecocokkan paket berdasarkan port asal. Dalam hal ini kia bisa mendefinisikan nomor port atau nama service-nya. Daftar nama service dan nomor port yang bersesuaian dapat dilihat di /etc/services. – -sport juga bisa dituliskan untuk range port tertentu. Misalkan kita ingin mendefinisikan range antara port 22 sampai dengan 80, maka kita bisa menuliskan – -sport 22:80.Jika bagian salah satu bagian pada range tersebut kita hilangkan maka hal itu bisa kita artikan dari port 0, jika bagian kiri yang kita hilangkan, atau 65535 jika bagian kanan yang kita hilangkan. Contohnya – -sport :80 artinya paket dengan port asal nol sampai dengan 80, atau – -sport 1024: artinya paket dengan port asal 1024 sampai dengan 65535.Match ini juga mengenal inversi.</li><br> 
+                <li><strong>- -dport or- -destination-port =</strong> Penggunaan match ini sama dengan match – -source-port.</li><br>
+                <li><strong>- -tcp or -flags =</strong> Digunakan untuk mencocokkan paket berdasarkan TCP flags yang ada pada paket tersebut. Pertama, pengecekan akan mengambil daftar flag yang akan diperbandingkan, dan kedua, akan memeriksa paket yang di-set 1, atau on.Pada kedua list, masing-masing entry-nya harus dipisahkan oleh koma dan tidak boleh ada spasi antar entry, kecuali spasi antar kedua list. Match ini mengenali SYN,ACK,FIN,RST,URG, PSH. Selain itu kita juga menuliskan ALL dan NONE. Match ini juga bisa menggunakan inversi.</li><br>
+                <li><strong>- -syn = </strong>  Match ini akan memeriksa apakah flag SYN di-set dan ACK dan FIN tidak di-set. Perintah ini sama artinya jika kita menggunakan match - -tcp-flags SYN,ACK,FIN SYNPaket dengan match di atas digunakan untuk melakukan request koneksi TCP yang baru terhadap server.</li><br>
+                <li><strong>iptables -A INPUT --protocol icmp –-in-interface (nama interface) -j reject =</strong> untuk mematikan ip pada sebuah computer Tapi kelihatan dimatikan oleh pengguna lain.</li><br>
+                <li><strong>iptables -A INPUT –protocol atau -p icmp –-in-interface (nama interface) -j DROP =</strong> untuk mematikan ip sebuah computer tapi tidak kelihatan dimatikan oleh pengguna lain.</li><br>
+                <li><strong>iptables -A INPUT -i (nama interface) -s (IP) =</strong> untuk mengeblock salah satu Ip seseorang.</li><br>
+                <li><strong>iptables -A INPUT -i (nama interface) -p tcp -s (IP) –-dport (protocol) -j DROP =</strong> untuk mengeblock semua termasuk ssh.jika ditambahkan /24  maka semua yang satu jaringan tidak akan bisa menyambung dengan kita.</li><br>
+              </ol>
+              
+           
+            <h4>Referensi :</h4>
+              <ol>
+              <li><a href="https://www.cyberciti.biz">https://www.cyberciti.biz</a></li>
+              <li><a href="https://inspirasiku-hanya-kamu.blogspot.com">https://inspirasiku-hanya-kamu.blogspot.com</a></li>
+              </ol>
+              
+              <h4><center>Terima Kasih</center></h4>
+             
+         </div>
+        </div>
+      </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+               <li class="list-inline-item">
+                <a href="https://www.facebook.com/mikel.uuppz">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://github.com/fesasabil">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+                <li class="list-inline-item">
+                <a href="https://www.instagram.com/sabili.feaslucu">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <p class="copyright text-muted">Copyright &copy; azzaid Website 2018</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/clean-blog.min.js"></script>
+
+  </body>
+
+</html>

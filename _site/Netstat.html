@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>azzaid Blog</title>
+      <title>azzaid Blog -  Networking</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -53,143 +53,59 @@
     </nav>
 
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('img/home-bg.jpg')">
+    <header class="masthead" style="background-image: url('img/nestat.jpg')">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
-            <div class="site-heading">
-              <h1>azzaid Blog</h1>
-              <span class="subheading">A Blog Theme by azzaid</span>
+            <div class="post-heading">
+              <h1>Mengenal Netstat</h1>
+              <h2 class="subheading">Pengertian dan fungsi Netstat</h2>
+              <span class="meta">Posted by
+                <a href="#">azzaid</a>
+                on November 7, 2018</span>
             </div>
           </div>
         </div>
       </div>
     </header>
 
-    <!-- Main Content -->
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-            <div class="post-preview">
-            <a href="Transfer-Files-Securely-Via-the-Network.html">
-              <h2 class="post-title">
-                Transfer Files Securely Via the Network
-              </h2>
-              <h3 class="post-subtitle">
-               Tata cara Transfer files
-              </h3>
-            </a>
-            <p class="post-meta">Posted by
-              <a href="#">azzaid</a>
-              on October 29, 2018</p>
-          </div>
-          <hr>
-             <div class="post-preview">
-            <a href="Hard-link-and-Soft-link.html">
-              <h2 class="post-title">
-               Mengenal Hardlink and Softlink
-              </h2>
-              <h3 class="post-subtitle">
-              Pengertian dan perbedaan Hard link and Soft link
-              </h3>
-            </a>
-            <p class="post-meta">Posted by
-              <a href="#">azzaid</a>
-              on October 31, 2018</p>
-          </div>
-          <hr>
-            <div class="post-preview">
-            <a href="cron-job.html">
-              <h2 class="post-title">
-               Mengenal Cron job
-              </h2>
-              <h3 class="post-subtitle">
-              Pengertian dan fungsi and Cron job
-              </h3>
-            </a>
-            <p class="post-meta">Posted by
-              <a href="#">azzaid</a>
-              on October 31, 2018</p>
-          </div>
-          <hr>
-            <div class="post-preview">
-            <a href="bootloaders.html">
-              <h2 class="post-title">
-               Mengenal Bootloaders
-              </h2>
-              <h3 class="post-subtitle">
-              Pengertian dan fungsi Bootloaders
-              </h3>
-            </a>
-            <p class="post-meta">Posted by
-              <a href="#">azzaid</a>
-              on November 5, 2018</p>
-          </div>
-          <hr>
-            <div class="post-preview">
-            <a href="trace.html">
-              <h2 class="post-title">
-               Mengenal Traceroute dan Ping
-              </h2>
-              <h3 class="post-subtitle">
-              Pengertian dan fungsi Traceroute dan Ping
-              </h3>
-            </a>
-            <p class="post-meta">Posted by
-              <a href="#">azzaid</a>
-              on November 6, 2018</p>
-          </div>
-          <hr>
-             <div class="post-preview">
-            <a href="iptables.html">
-              <h2 class="post-title">
-               Mengenal Iptables
-              </h2>
-              <h3 class="post-subtitle">
-              Pengertian dan fungsi Iptables
-              </h3>
-            </a>
-            <p class="post-meta">Posted by
-              <a href="#">azzaid</a>
-              on November 6, 2018</p>
-          </div>
-          <hr>
-            <div class="post-preview">
-            <a href="Netstat.html">
-              <h2 class="post-title">
-               Mengenal Netstat
-              </h2>
-              <h3 class="post-subtitle">
-              Pengertian dan fungsi Netstat
-              </h3>
-            </a>
-            <p class="post-meta">Posted by
-              <a href="#">azzaid</a>
-              on November 7, 2018</p>
-          </div>
-          <hr>
-            <div class="post-preview">
-            <a href="useradd.html">
-              <h2 class="post-title">
-               Mengenal User dan Group
-              </h2>
-              <h3 class="post-subtitle">
-              Pengertian dan fungsi User dan Group
-              </h3>
-            </a>
-            <p class="post-meta">Posted by
-              <a href="#">azzaid</a>
-              on November 7, 2018</p>
-          </div>
-          <hr>
-          <!-- Pager -->
-          <div class="clearfix">
-            <a class="btn btn-primary float-right" href="index.html">Older Posts &rarr;</a>
-          </div>
+    <!-- Post Content -->
+    <article>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+        <h3>Pengertian Netstat :</h3>
+              <p><I>Netstat </I> adalah program berbasis teks yang berfungsi untuk memantau koneksi jaringan pada suatu komputer, baik itu jaringan lokal (LAN) maupun jaringan internet.</p>
+              <p>Kapan saya membutuhkan netstat? misalkan suatu ketika anda sedang internetan kemudian tiba tiba koneksi menjadi sangat lambat dan anda mencurigai ada program di komputer anda yang jadi penyebabnya.<br><br>
+              Jika hal itu yang anda alami maka anda perlu memanggil program netstat untuk melakukan pengecekan.</p>
+            
+        <h4>Berikut ini beberapa parameter untuk perintah netstat :</h4>
+            <ol>
+                <li><strong>netstat -a =</strong> menampilkan semua koneksi baik yang listening maupun yang tidak.</li><br>
+                <li><strong>netstat -l =</strong> menampilkan semua koneksi yang listening saja.</li><br>
+                <li><strong>netstat -s = </strong> menampilkan statistik per protokol.</li><br>
+                <li><strong>netstat -n =</strong> menampilkan dalam bentuk numerik.</li><br>
+                <li><strong>netstat -o =</strong> menampilkan timer.</li><br>
+                <li><strong>netstat -g =</strong> menampilkan berdasarkan group membership.</li><br>
+                <li><strong>netstat -i =</strong> menampilkan tabel network interface.</li><br>
+                <li><strong>netstat -I(interface) =</strong> menampilkan network interface tertentu misal netstat -Ieth0.</li><br>
+                <li><strong>netstat -p =</strong> menampilkan PID atau program yang sedang melakukan koneksi.</li><br>
+                <li><strong>netstat -M =</strong> menampilkan IP masquerade.</li><br>
+              </ol>
+              
+           
+            <h4>Referensi :</h4>
+              <ol>
+              <li><a href="http://www.untukku.com">http://www.untukku.com</a></li>
+              </ol>
+              
+              <h4><center>Terima Kasih</center></h4>
+             
+         </div>
         </div>
       </div>
-    </div>
+    </article>
 
     <hr>
 
@@ -207,7 +123,7 @@
                   </span>
                 </a>
               </li>
-              <li class="list-inline-item">
+               <li class="list-inline-item">
                 <a href="https://www.facebook.com/mikel.uuppz">
                   <span class="fa-stack fa-lg">
                     <i class="fas fa-circle fa-stack-2x"></i>
