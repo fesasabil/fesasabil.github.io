@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+      <title>azzaid Blog -  Networking</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+      
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">azzaid Creative</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Technology.html">Sample Post</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('img/dns.png')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-heading">
+              <h1>Membuat DNS</h1>
+              <h2 class="subheading">Tutorial membuat DNS</h2>
+              <span class="meta">Posted by
+                <a href="#">azzaid</a>
+                on November 7, 2018</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+        <h3>Tutorial membuat DNS :</h3>
+              <li><strong>Kita harus mengupdate linux kita terlebih dahulu :</strong></li><br>
+                <pre><strong>$ sudo apt-get update</strong></pre>
+              <li><strong>setelah kita mengupdate,sekarang kita harus menginstall Bind terlebih dahulu :</strong></li><br>
+                <pre><strong>$ sudo apt-get install bind9 bind9utils bind9-doc</strong></pre>
+              <li><strong>Sebelum melanjutkan, mari kita mengatur BIND ke mode IPv4. Di kedua server, edit file unit sistem bind9 dengan mengetik :</strong></li><br>
+                <pre><strong>$ sudo systemctl edit --full bind9</strong></pre>
+              <P>Tambahkan "-4" ke ujung direktif ExecStart. Seharusnya terlihat seperti berikut :</P>
+              <pre class="code-pre "><code langs="">. . .
+              [Service]
+              ExecStart=/usr/sbin/named -f -u bind <font color=blue>-4</font>
+              </code></pre>
+             <li><strong>Muat kembali daemon sistem untuk membaca konfigurasi baru ke dalam sistem yang sedang berjalan :</strong></li><br>
+                <pre><strong>$ sudo systemctl daemon-reload</strong></pre>
+              <li><strong>Mulai ulang BIND untuk menerapkan perubahan :</strong></li><br>
+                  <pre><strong>$ sudo systemctl restart bind9</strong></pre>
+              
+        <h4>Konfigurasikan Server DNS Primer :</h4>
+              <li><strong>Konfigurasi pengaturan file</strong><br>
+                  Pada ns1, buka file named.conf.options untuk mengedit :</li><br>
+                <pre><strong>$ sudo nano /etc/bind/named.conf.options</strong></pre>
+              <p>Di atas blok option yang ada, buat blok ACL baru yang disebut "trusted". Di sinilah kami akan menentukan daftar klien yang akan kami izinkan permintaan DNS rekursif dari (yaitu server Anda yang berada di pusat data yang sama dengan ns1). Dengan menggunakan contoh alamat IP pribadi kami, kami akan menambahkan ns1, ns2, host1, dan host2 ke daftar klien trusted kami dan yang diberi warna biru maka kalian boleh menggantinya dengan IP kalian :</p>
+              <pre class="code-pre "><code langs="">acl "trusted" {
+            <font color=blue>10.128.10.11</font>;    # ns1 - can be set to localhost
+            <font color=blue>10.128.20.12</font>;    # ns2
+            <font color=blue>10.128.100.101</font>;  # host1
+            <font color=blue>10.128.200.102</font>;  # host2
+            };
+            </code></pre>
+              <p>Selanjutnya kita akan menambahkan baris konfigurasi yang disorot(dan gantikan sesuai dengan IP ns1 yang kalian isi tadi)sehingga terlihat seperti ini : </p>
+              
+              <pre class="code-pre "><code langs="">        . . .
+
+                };
+
+                options {
+                directory "/var/cache/bind";
+
+                <font color=blue>recursion yes;</font>                 # enables resursive queries
+                <font color=blue>allow-recursion { trusted; };</font>  # allows recursive queries from "trusted" clients
+                <font color=blue>listen-on { 10.128.10.11; };</font>   # ns1 private IP address - listen on private network only
+                <font color=blue>allow-transfer { none; };</font>      # disable zone transfers by default
+
+                <font color=blue>forwarders {</font>
+                <font color=blue>8.8.8.8;</font>
+                <font color=blue>8.8.4.4;</font>
+                <font color=blue>};</font>
+
+                . . .
+                };
+                </code></pre>
+              
+              <p>Ketika Anda selesai, simpan dan tutup file <strong>named.conf.options</strong>. Konfigurasi di atas menetapkan bahwa hanya server Anda sendiri (yang "tepercaya") yang akan dapat melakukan kueri server DNS Anda.Selanjutnya, kita akan mengkonfigurasi file lokal, untuk menentukan zona DNS kami.</p>
+              
+             <li><strong>Konfigurasi file local</strong><br>
+                  Pada ns1, buka file named.conf.local untuk mengedit :</li><br>
+                <pre><strong>$ sudo nano /etc/bind/named.conf.local</strong></pre>
+              <p>Selain beberapa komentar, file harus kosong  dan jika terdapat isinya maka taruhlah dibawahnya. Di sini, kami akan menentukan zona maju dan mundur kami.<br>
+                Tambahkan zona maju dengan garis-garis berikut (gantikan nama zona dengan Anda sendiri) :</p>
+              <pre class="code-pre "><code langs="">zone <font color=blue>".com"</font>{
+            type master;
+            file "/etc/bind/zones/db.<font color=blue>example.com</font>"; # zone file path
+        allow-transfer { <font color=blue>10.128.20.12</font>; };           # ns2 private IP address - secondary
+            };</code></pre>
+              
+              <p>Nah sekarang kita akan menambahkan zona reverse.jadi kami memiliki IP "10.128.20.12" maka zona reverse kami "128.10" yang merupakan pembalikan dari "10.128" yang berada pada awal IP :</p>
+              <pre class="code-pre "><code langs="">    . . .
+              };
+
+                zone "<font color=blue>128.10</font>.in-addr.arpa" {
+                type master;
+                file "/etc/bind/zones/db.<font color=blue>10.128</font>";  # 10.128.0.0/16 subnet
+                allow-transfer { <font color=blue>10.128.20.12</font>; };  # ns2 private IP address - secondary
+                };</code></pre>
+              <p>Jika server Anda menjangkau beberapa subnet pribadi tetapi berada di pusat data yang sama, pastikan untuk menentukan zona tambahan dan file zona untuk setiap subnet yang berbeda. Ketika Anda selesai menambahkan semua zona yang Anda inginkan, simpan dan keluar dari file named.conf.local.<br>
+              Sekarang zona kami ditentukan dalam BIND, kita perlu membuat file forward dan reverse zone yang sesuai.</p>
+            
+               
+             <li><strong>Membuat file Forward Zone</strong><br>
+                 File zona kedepan adalah tempat kami menentukan catatan DNS dan untuk pencarian DNS ke depan. Yaitu, ketika DNS menerima kueri nama, "host1.azzaid.com" misalnya, DNS akan melihat dalam file zona kedepan untuk menyelesaikan alamat IP pribadi host1.<br>
+                 Mari kita buat direktori tempat file zona kita akan berada. Menurut konfigurasi named.conf.local kami, lokasi itu harus / etc / bind / zones :</li><br>
+                <pre><strong>$ sudo mkdir /etc/bind/zones</strong></pre>
+              
+              <p>Nah sekarang kami akan mendasarkan file zone pada file sample db.local zone,ikuti perintah berikut :</p>
+              <pre><strong>$ cd /etc/bind/zones</strong></pre>
+              <pre><strong>$ sudo cp ../db.local ./db.<font color=blue>example.com</font></strong></pre>
+              
+              <p>Sekarang kita edit file forward zonenya :</p>
+              <pre><strong>$ sudo nano /etc/bind/zones/db.<font color=blue>example.com</font></strong></pre>
+              
+              <p><strong>Pertama</strong>, kita akan mengedit catatan SOA. Ganti "localhost" pertama dengan fQDN ns1, lalu ganti "root.localhost" dengan "azzaid.com". Juga, setiap kali Anda mengedit file zona, Anda harus menaikkan nilai seri sebelum Anda me-restart proses bernama. Kami akan menaikkannya menjadi "3". Seharusnya terlihat seperti ini :</p>
+              <pre class="code-pre "><code langs="">@       IN      SOA     <font color=blue>ns1.example.com</font>. <font  color=blue>example.com</font>. (
+                              <font color=blue>3</font>        ; Serial
+
+                              . . .
+            </code></pre>
+              <p>Di akhir file, tambahkan catatan server nama Anda dengan baris berikut (ganti nama dengan nama Anda sendiri). Perhatikan bahwa kolom kedua menentukan bahwa ini adalah catatan "NS" :</p>
+              <pre class="code-pre "><code langs="">. . .
+
+                ; name servers - NS records
+                IN      NS      ns1.<font color=blue>example.com</font>.
+                IN      NS      ns2.<font color=blue>example.com</font>.
+            </code></pre>
+              <p>Kemudian tambahkan catatan A dan taruh dibawah <strong>name servers - NS records</strong> untuk host Anda yang termasuk dalam zona ini. Ini termasuk server apa pun yang namanya kami ingin akhiri dengan ".nyc3.example.com" (gantikan nama dan alamat IP pribadi). Dengan menggunakan nama contoh kami dan alamat IP pribadi, kami akan menambahkan catatan A untuk ns1, ns2, host1, dan host2 seperti :</p>
+              <pre class="code-pre "><code langs="">$TTL    604800
+              @       IN      SOA     <font color=blue>ns1.example.com</font>.<font color=blue>example.com</font>. (
+                  <font color=blue>3</font>     ; Serial
+                                            604800     ; Refresh
+                                             86400     ; Retry
+                                           2419200     ; Expire
+                                            604800 )   ; Negative Cache TTL
+            ;
+            ; name servers - NS records
+            IN      NS      ns1.<font color=blue>example.com</font>.
+            IN      NS      ns2.<font color=blue>example.com.com</font>.
+
+            ; name servers - A records
+            ns1.<font color=blue>example.com</font>.          IN      A       <font color=blue>10.128.10.11</font>
+            ns2.<font color=blue>example.com</font>.          IN      A       <font color=blue>10.128.20.12</font>
+
+            ; 10.128.0.0/16 - A records
+            <font color=blue>host1.example.com</font>.        IN      A      <font color=blue>10.128.100.101</font>
+            <font color=blue>host2.example.com</font>.        IN      A      <font color=blue>10.128.200.102</font>
+            </code></pre>
+              
+        <h4>Membuat File Zona Reverse :</h4>
+              <P><I>File zona reverse</I> adalah tempat untuk menentukan catatan PTR DNS untuk pencarian DNS terbalik. Yaitu, ketika DNS menerima kueri berdasarkan alamat IP, "10.128.100.101" misalnya, akan terlihat dalam file zona reverse (s) untuk menyelesaikan FQDN yang sesuai, "host1.nyc3.example.com" dalam kasus ini .<br>
+
+               Pada ns1, untuk setiap reverse zone yang ditentukan dalam file named.conf.local, buat file reverse zone. Kami akan mendasarkan file zona reverse kami (s) pada file zona sampel db.127. Salin ke lokasi yang tepat dengan perintah berikut (mengganti nama file tujuan sehingga cocok dengan definisi zona reverse Anda) :</P>
+               <pre><strong>$ cd /etc/bind/zones</strong></pre>
+               <pre><strong>$ sudo cp ../db.127 ./db.<font color=blue>10.128</font></strong></pre>
+              
+              <p>Sekarang kita akan mengedit file zona reverse yang sesuai dengan zona rerverse (s) yang didefinisikan di <strong>named.conf.local</strong> :</p>
+              <pre><strong>$ sudo nano /etc/bind/zones/db.<font color=blue>10.128</font></strong></pre>
+              
+              <P>Dengan cara yang sama dengan file zona diatas, Anda akan mengedit catatan SOA dan menaikkan nilai serial. Seharusnya terlihat seperti ini :</P>
+              <pre class="code-pre "><code langs="">@       IN      SOA     <font color=blue>ns1.example.com</font>. <font color=blue>example.com</font>. (
+                              <font color=blue>3</font>         ; Serial
+
+                              . . .
+              </code></pre>
+              <p>Di akhir file, tambahkan catatan server nama Anda dengan baris berikut (ganti nama dengan nama Anda sendiri). Perhatikan bahwa kolom kedua menentukan bahwa ini adalah catatan "NS" :</p>
+              <pre class="code-pre "><code langs=""> . . .
+
+            ; name servers - NS records
+            IN      NS      ns1.<font color=blue>example.com</font>.
+            IN      NS      ns2.<font color=blue>example.com</font>.
+                </code></pre>
+              
+              <P>Kemudian tambahkan <strong>PTR</strong> untuk semua server Anda yang alamat IPnya ada di subnet dari file zona yang Anda edit. Dalam contoh ini, termasuk semua host kami karena semuanya ada di subnet <strong>10.128.0.0/16</strong>. Perhatikan bahwa kolom pertama terdiri dari dua oktet terakhir dari alamat IP pribadi server Anda dalam urutan terbalik. Pastikan untuk mengganti nama dan alamat IP pribadi agar sesuai dengan server Anda :</P>
+              <pre class="code-pre "><code langs="">. . .
+
+              ; PTR Records
+              <font color=blue>11.10</font>   IN      PTR     ns1.<font color=blue>example.com</font>.    ; 10.128.10.11
+              <font color=blue>12.20</font>   IN      PTR     ns2.<font color=blue>example.com</font>.    ; 10.128.20.12
+              <font color=blue>101.100</font> IN      PTR     <font color=blue>host1.example.com</font>.  ; 10.128.100.101
+              <font color=blue>102.200</font> IN      PTR     <font color=blue>host2.example.com</font>.  ; 10.128.200.102
+              </code></pre>
+              
+        <h4>Mengecek Sintaks Bind Configurasi</h4>
+            <p>Selanjutnya kita akan mengecek configurasi bind dengan command dibawah ini :</p>
+              <pre><strong>$ sudo named-checkconf</strong></pre>
+            <P>Jika file anda tidak terjadi kesalahan sintaks maka itu sudah benar dan Jika ada masalah pada sintaks maka tinjau kembali <strong>named-checkconf</strong> anda.</P>te
+            <P>Setelah itu kita akan mengecek file zona kita dengan command seperti dibawah,dan jangan lupa untuk mengganti forward zone dan file dengan punya anda :</P>
+              <pre><strong>$ sudo named-checkzone <font color=blue>example.com db.example.com</font></strong></pre>
+            <p>Jika sudah memeriksa file zona,kita akan melanjutkan memeriksa konfigurasi zona reverse,jalankan perintah berikut (ubah angka agar sesuai dengan zona reverse dan file Anda) :</p>
+              <pre><strong>$ sudo named-checkzone <font color=blue> 128.10</font>.in-addr.arpa /etc/bind/zones/db.<font color=blue>10.128</font></strong></pre>
+              
+        <h4>Restart BIND</h4>
+            <p>ikuti perintah dibawah agar merestart Bind :</p>
+              <pre><strong>$ sudo systemctl restart bind9</strong></pre>
+            <P>Jika Anda memiliki firewall UFW dikonfigurasi, buka akses ke BIND dengan mengetik :</P>
+              <pre><strong>$ sudo ufw allow Bind9</strong></pre>
+              
+        <h4>Menambahkan IP ke File Resolv</h4>
+            <P>Langkah terakhir yaitu kit akan menambahkan IP kita ke dalam resolv.conf,ikuti perintah berikut :</P>
+              <pre><strong>$  sudo nano /etc/resolv.conf</strong></pre>
+            <P>Tambahkan IP kalian dibawah IP yang sudah berada disana,jangan lupa agar memberikan <strong>#</strong> didepan IP yang sudah ada,lihat contoh dibawah :</P>
+              <pre class="code-pre "><code langs=""> . . .
+              
+            #nameserver 127.0.0.53
+            nameserver<font color=blue> 10.128.10.11</font>.
+                </code></pre>
+            <p>sekarang kita coba mengetestnya dengan perintah berikut,jangan lupa untuk menggantinya dengan nama server anda :</p>
+              <pre><strong>$  ping <font color=blue>example.com</font></strong></pre>
+            <P>jika berhasil maka akan keluar seperti ini :</P>
+              <pre class="code-pre "><code langs=""> 
+            <strong>$ ping example.com</strong>
+            PING example.com (36.86.63.182) 56(84) bytes of data.
+            64 bytes from 36.86.63.182 (36.86.63.182): icmp_seq=14 ttl=247 time=13.0 ms
+            64 bytes from 36.86.63.182 (36.86.63.182): icmp_seq=15 ttl=247 time=13.0 ms
+            64 bytes from 36.86.63.182 (36.86.63.182): icmp_seq=16 ttl=247 time=13.0 ms
+            64 bytes from 36.86.63.182 (36.86.63.182): icmp_seq=17 ttl=247 time=13.0 ms
+            64 bytes from 36.86.63.182 (36.86.63.182): icmp_seq=18 ttl=247 time=13.0 ms
+                </code></pre><br>
+              
+        <h4>Referensi :</h4>
+              <li><a href="https://www.digitalocean.com">https://www.digitalocean.com</a></li><br>
+              
+         <P>Mungkin hanya itu yang bisa saya tulis kali ini,jika ada saran dan kritik silahkan inbox ke sosmed saya yang berada di bagian bawah website,saran dan kritik anda akan sangat membantu buat saya. </P>
+              
+        <h4><center>Terima Kasih</center></h4>
+             
+         </div>
+        </div>
+      </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+               <li class="list-inline-item">
+                <a href="https://www.facebook.com/mikel.uuppz">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://github.com/fesasabil">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+                <li class="list-inline-item">
+                <a href="https://www.instagram.com/sabili.feaslucu">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <p class="copyright text-muted">Copyright &copy; azzaid Website 2018</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/clean-blog.min.js"></script>
+
+  </body>
+
+</html>
