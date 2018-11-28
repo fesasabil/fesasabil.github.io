@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+      <title>azzaid Blog -  Linux</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">azzaid Creative</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Technology.html">Sample Post</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('img/database.jpg')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-heading">
+              <h1>Mengenal MySQL dan Membuat Wordpress Menggunakan LAMP Stack</h1>
+              <h2 class="subheading">Pengertian dan Tutorial membuat Wordpress Menggunakan LAMP Stack</h2>
+              <span class="meta">Posted by
+                <a href="#">azzaid</a>
+                on November 27, 2018</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+        <h3>Pengertian SQL :</h3>
+              <p><I> SQL atau biasa disebut Structured Query Language </I> adalah  sebagai suatu bahasa yang digunakan untuk mengakses suatu data dalam database relasional dan terstruktur sedangkan MySQL dalam hal ini menjadi software atau tools untuk mengelola atau memanajemen SQL dengan menggunakan Query atau Bahasa khusus. Pada dasarnya database yang dikelola dalam MySQL memang tidak jauh berbeda dari Microsoft Acces yakni berbentuk tabel – tabel yang berisi informasi tertentu. Perbedaannya terletak pada penggunaan serta pengelolaan database tersebut. </p>
+              
+        <h4>Fungsi MySQL :</h4>
+              <p>untuk membuat dan mengelola suatu database secara terstruktur dan otomatis menggunakan suatu Bahasa khusus. Namun lebih jelasnya lagi MySQL ini memberikan kemudahan bagi para pengguna yang ingin mengelola suatu data yang berisi informasi secara String (text based) dan dapat diakses secara pribadi maupun untuk umum dalam suatu web. Hampir semua host atau penyedia server web memberikan fasilitas MySQL untuk para developer web yang menginginkan pengelolaan database di websitenya.</p>
+              
+        <h4>Tutorial Cara Menginstall WordPress 4.9 Pada Ubuntu 16.10 / 16.04 dan Linux Mint 18 Menggunakan LAMP Stack :</h4>
+            <h5>Step 1: Install Apache Web Server</h5>
+              <li>Install Apache web server,ikuti perintah berikut :</li><br>
+              <pre><strong>$ sudo apt-get install apache2 apache2-utils </strong></pre>
+              
+              <li>Kita perlu mengaktifkan Apache terlebih dahulu dengan menggunakan perintah berikut :</li><br>
+              <pre><strong>$ sudo systemctl enable apache2</strong></pre>
+              <pre><strong>$ sudo systemctl start apache2</strong></pre>
+              
+              <li>Untuk menguji apakah server berjalan, buka browser web Anda dan masukkan http: // server_address. Halaman indeks default Apache2 akan ditampilkan jika server web aktif dan berjalan dan Direktori root default Apache adalah / var / www / html, semua file web Anda akan disimpan dalam direktori ini.</li>
+              <img src="img/apache2.png" alt="" height="500px;" width="800px;"><br><br>
+              
+            <h5>Step 2: Install MySQL Database Server</h5>
+              <li>Selanjutnya kita akan menginstall MySQL databse server dengan perintah berikut :</li><br>
+               <pre><strong>$ sudo apt-get install mysql-client mysql-server</strong></pre>
+              
+              <p>Jika pada masa instalasi paket anda diminta untuk memasukan password maka masukkan dengan password yang aman serta bagus dan lnjutkan dengan mengclick tombol 'OK'.</p>
+              
+              <li>Selanjutnya kita akan mengamankan database server,mari ikuti perintah berikut :</li><br>
+              <pre><strong>$ sudo mysql_secure_installation </strong></pre>
+            
+              <p>Berikutnya anda akan diminta untuk melakuakn 'validate_password' maka ketik <strong>'Y atau Yes'</strong>lalu Enter dan selanjutnya jika anda ingin mengganti password maka ketik <strong>'Y atau Yes'</strong> dan jika tidak anda ketik <strong>'N atau No'</strong>untuk perintah selanjutnya anda hanya perlu mengetikkan <strong>'Y atau Yes'</strong>saja.</p>
+              
+              <p>Jika anda mengalami error saat menginstall MySQL maka bukalah website berikut : <strong><a href="https://linuxscriptshub.com/uninstall-completely-remove-mysql-ubuntu-16-04/">https://linuxscriptshub.com</a></strong></p>
+              
+            <h5>Step 3: Install PHP and Modules</h5>
+              <li>pada tahap ini kita akan menginstall PHP dan Modules untuk memudahkan anda dalam pekerjaan anda,mari ikuti perintah berikut :</li><br>
+              <pre><strong>$ sudo apt-get install php7.0 php7.0-mysql libapache2-mod-php7.0 php7.0-cli php7.0-cgi php7.0-gd   </strong></pre>
+              
+              <li>selanjutnya kita akan menguji apakah PHP berjalan dengan baik atau tidak kita perlu membuat file <strong>info.php</strong> didalam file <strong>/var/www/html</strong>,mari ikuti perintah berikut :</li><br>
+              <pre><strong>$ sudo vi /var/www/html/info.phpd   </strong></pre>
+              
+              <li>Lalu masukan tulisan berikut di dalam file yang telah kalian buat tadi :</li>
+              <pre><strong>
+              <td width="167">&lt;?php 
+              phpinfo();
+              ?&gt;</td></strong></pre>
+              
+              <P>Jika kalian sudah membuatnya maka kalian bisa mengeceknya dibrowser dengan mengetikkkan <strong>localhost/info.php</strong> maka akan muncul seperti gambar berikut :</P>
+              <img src="img/php-info.png" alt="" height="500px" width="800px"><br><br>
+              
+            <h5>Step 4: Install WordPress CMS</h5>
+              <li>pada tahap ini kita akan menginstall Wordpress CMS dan mengekstraknya,mari ikuti perintah berikut :</li><br>
+              <pre><strong>$ wget -c http://wordpress.org/latest.tar.gz  </strong></pre>
+              <pre><strong>$ tar -xzvf latest.tar.gz </strong></pre>
+              
+              <li>Selanjutnya kita akan memindahkan file Wordpress dan folder ekstraknya ke <strong>/var/www/html/</strong>,mari ikuti perintah berikut :</li><br>
+              <pre><strong>$ sudo rsync -av wordpress/* /var/www/html/  </strong></pre>
+              
+              <li>Selanjutnya kita akan mengganti permission website directory dan memberikan kepemilkikan Worspress file kepada web server,mari ikuti perintah berikut :</li><br>
+              <pre><strong>$ sudo chown -R www-data:www-data /var/www/html/</strong></pre>
+              <pre><strong>$ sudo chmod -R 755 /var/www/html/</strong></pre>
+              
+           <h5>Step 5: Membuat WordPress Database</h5>
+               <li>Pada tahap akhir ini kita akan membuat database baru tapi sebelum itu kita harus masuk ke <strong>MySQL database</strong> terlebih dahulu dan jangan lupa untuk masuk ke root terlebih dahulu,mari ikuti perintah berikut :</li><br>
+               <pre><strong>$ mysql -u root -p  </strong></pre>
+              
+              <li>Selanjutnya kita akan akan membuat database baru dan jangan lupa menekan 'Enter' setelah perintah baris 'MySQL',mari ikuti perintah berikut :</li><br>
+              <pre><strong>
+              mysql> CREATE DATABASE wp_Blogku;
+              mysql> GRANT ALL PRIVILEGES ON wp_Blogku.* TO 'your_username_here'@'localhost' IDENTIFIED BY 'your_chosen_password_here';
+              mysql> FLUSH PRIVILEGES;
+              mysql> EXIT;</strong></pre>
+              
+              <li>Setelah itu kita akan mengganti configure yang di <strong>wp-config.php</strong> dan gantilah yang diberi tanda tebal dengan yang kalian miliki,ikuti perintah berikut :</li><br>
+              <pre>
+              // ** MySQL settings - You can get this info from your web host ** //
+              /** The name of the database for WordPress */
+              define('DB_NAME', '<strong>database_name_here</strong>'); 
+              /** MySQL database username */ 
+              define('DB_USER', '<strong>username_here</strong>'); 
+              /** MySQL database password */ 
+              define('DB_PASSWORD', '<strong>password_here</strong>'); 
+              /** MySQL hostname */ define('DB_HOST', 'localhost'); /** Database Charset to use in creating database tables. */ define('DB_CHARSET', 'utf8'); /** The Database Collate type. Don't change this if in doubt. */ define('DB_COLLATE', '');</pre>
+              
+              <li>Yang terakhir sekarang kita akan merestart apache2 dan mysql,mari ikuti perintah berikut :</li>
+              <pre><strong>$ sudo systemctl restart apache2.service</strong></pre>
+              <pre><strong>$ sudo systemctl restart mysql.service</strong></pre>
+              
+             <p>Semoga berhasil mencoba kawan.jika terjadi error atau hal lain maka bisa chat dengan admin lewat medsos dibawah.</p>
+            
+       <h4>Referensi :</h4>
+              <li><a href="https://www.tecmint.com/install-wordpress-on-ubuntu-16-04-with-lamp/#">https://www.tecmint.com</a></li><br>
+              
+        <h4><center>Terima Kasih</center></h4>
+             
+         </div>
+        </div>
+      </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+               <li class="list-inline-item">
+                <a href="https://www.facebook.com/mikel.uuppz">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://github.com/fesasabil">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+                <li class="list-inline-item">
+                <a href="https://www.instagram.com/sabili.feaslucu">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <p class="copyright text-muted">Copyright &copy; azzaid Website 2018</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/clean-blog.min.js"></script>
+
+  </body>
+
+</html>
