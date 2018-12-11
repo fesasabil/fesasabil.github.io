@@ -108,13 +108,13 @@
             <h5>Installasi Qemu(KVM) :</h5>
                 <li>Kita akan perbarui cache repositori :</li><br>
                 <pre><strong>$ sudo apt-get update </strong></pre>
-              
+        
                 <li>Selanjutnya kita menginstall Qemu(KVM),ikuti perintah berikut :</li><br>
                 <pre><strong>$ sudo apt-get install -y qemu-kvm qemu virt-manager virt-viewer libvirt-bin </strong></pre>
               
             <h5>Menconfigure Qemu(KVM) :</h5>
               <li>Kita akan membuat Virtual Machine :</li><br>
-                <pre><strong>sudo virt-install  --name=itzgeekguest  --ram=1024  --vcpus=1  --cdrom=/var/lib/libvirt/images/CentOS-6.9-x86_64-minimal.iso --os-type=linux --os-variant=rhel7  --network bridge=br1 --graphics=spice  --disk path=/var/lib/libvirt/images/itzgeekguest.dsk,size=4</strong></pre>
+                <pre><strong>sudo virt-install  --name=elementary  --ram=1024  --vcpus=1  --cdrom=/home/fesa/Downloads/elementaryos-5.0-stable.20181016.isoo --os-type=linux --os-variant=rhel7  --network bridge=br1 --graphics=spice  --disk path=/home/fesa/Downloads/elementary.dsk,size=4</strong></pre>
                 <p>Beberapa penjelasan di atas :</p>
                 <li>–name – : Nama untuk Virtual Machine.</li>
                 <li>–ram – : Memory ram yang ingin digunakan dengan hitungan MB dan jangan menaruh lebih dari kapasitas ram yang kita memiliki dicomputer asli.</li>
