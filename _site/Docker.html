@@ -140,14 +140,14 @@
                 <pre><strong>$ netstat -lnpt</strong></pre> 
               
             <h5>Menyimpan Docker :</h5>
-                <p>Nah sebelum kalian melakukan ini pastikan kalian telah membuat <strong>Docker Hub</strong> terlebih dahulu,kalian bisa membuatnya dengan klik link berikut <a href="https://hub.docker.com/">https://hub.docker.com/</a></p>
+              <p>Nah sebelum kalian melakukan ini pastikan kalian telah membuat <strong>Docker Hub</strong> terlebih dahulu,kalian bisa membuatnya dengan klik link berikut <a href="https://hub.docker.com/"><strong>https://hub.docker.com</strong></a></p>
               
                 <li>Kita akan mencommit  docker dengan command berikut :</li><br>
                 <pre><strong>$ docker commit -m "What did you do to the image" -a "Author Name" container-id repository/new_image_name</strong></pre>
                 <p>Jika kalian bingung maka perhatikan contoh dibawah:</p>
                 <pre><strong>$ docker commit -m "added node.js" -a "fesasabil" d9b100f2f636 fesasabil/ubuntu-nodejs</strong></pre>
               
-                <p>Dan jangan lupa kita untuk mencommitnya dikarenakan jika kita belum mencommitnya maka ketika kita keluar dan masuk kembali semua data yang telah kita install maupun buaat akan hilang.</p>
+                <p>Dan jangan lupa kita untuk mencommitnya dikarenakan jika kita belum mencommitnya maka ketika kita keluar dan masuk kembali semua data yang telah kita install maupun buat akan hilang.</p>
               
                 <li>Selanjutnya jika kita sudah mencommit docker maka kita akan login ke Docker Hub,ikuti perintah berikut :</li><br>
                 <pre><strong>$ docker login -u docker-registry-username</strong></pre>
