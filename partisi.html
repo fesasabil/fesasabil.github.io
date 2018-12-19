@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+      <title>azzaid Blog -  Linux</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">azzaid Creative</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Technology.html">Sample Post</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('img/partisi.png')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-heading">
+              <h1>Mengenal Partisi dan Cara penggunaannya</h1>
+              <h2 class="subhead(ing">Pengertian,fungsi dan cara penggunaan Partisi
+              </h2>
+              <span class="meta">Posted by
+                <a href="#">azzaid</a>
+                on December 18, 2018</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+        <h3>Pengertian Partisi :</h3>
+              <p><I> Partisi</I> adalah  sistem berkas atau bagian-bagian media penyimpanan data pada harddisk atau bisa juga proses pembagian ruang-ruang kosong pada harddisk untuk memberikan file system pada ruang kosong yang terdapat pada harddisk, kemudian ruang kosong pada harddisk yang telah diberi file system tersebut, digunakan untuk menyimpan macam-macam data dan sistem operasi. Hardisk dipartisi menjadi dua, dengan harapan bad sektor yang ada akan terpisah pada satu partisi yang tidak terpakai. Setiap partisi dapat dinyatakan oleh sebuah huruf dan akan menjadi drive yang bisa diakses oleh DOS. </p>
+              
+        <h4>Beberapa Fungsi Partisi pada Hardisk :</h4>
+              <li><strong>Multiple File System</strong></li>
+              <p>Ketika kamu membuat partisi maka kamu harus melakukan pemformatan terlebih dahulu sebelum dapat digunakan. Ketika melakukan file format, harus terlebih dahulu memilih file system.</p>
+              
+              <li><strong>Multiple Sistem Operasi</strong></li>
+              <p>Mungkin diantara kalian ada yang menginstall berbagai sistem operasi dalam satu komputer, seperti windows 7 dan Ubuntu. Seperti yang kalian sudah ketahui kalau Ubuntu bisa membaca partisi Windows, namun sebaliknya Windows tidak bisa membaca partisi Ubuntu. Maka kalian perlu membuat 2 partisi yang berbeda dan menginstall boot loader untuk menjalankan sistem operasi.</p>
+              
+              <li><strong>Ruang Harddisk Yang Lebih</strong></li>
+              <P>Ketika File System menyimpan data di partisi yang lebih besar, maka akan semakin banyak ruang harddisk kosong. Dengan memiliki berbagai partisi dengan ukuran yang lebih kecil, kamu dapat mengurangi jumlah sampah dari file system.</P>
+              
+              <li><strong>File System Terpisah Dengan File System User</strong></li>
+              <P>Beberapa komponen sistem operasi membutuhkan ruang tersendiri, sedangkan user membutuhkan partisi ruang sendiri. Oleh karena itu, kalian harus membuat partisi yang terpisah dari partisi filesystem sistem operasi.</P>
+              
+              
+        <h4>Beberapa tipe partisi :</h4>
+              <li><strong>Partisi Primary.</strong></li>
+              <P>Partisi primary merupakan partisi utama yang berfungsi sebagai partisi yang pertama diakses komputer untuk booting. Partisi Primary digunakan sebagai Bootable yang pertama  (drive C) yang berfungsi sebagai Master. Di partisi (C) di pasang sebuah sistem operasi agar dapat di Boot pada awal Booting.</P>
+              
+              <li><strong>Partisi Extended.</strong></li>
+              <p>Partisi Extended merupakan partisi utama pada harddisk yang berfungsi untuk mengatasi keterbatasan pembagian harddisk. Partisi Extended di sebut juga pembatas antara Partisi Primary dan Partisi Logical. Partisi Extended tidak menangani pengolahan data secara langsung. Untuk dapat menggunakannya, kita harus menciptakan Partisi Logical terlebih dahulu. Bisa dibilang tipe partisi ini adalah partisi lain selain Partisi Primary.</p>
+              
+              <li><strong>Partisi Logical.</strong></li>
+              <P>Partisi Logical merupakan partisi sampingan yang terdapat pada Partisi Extended. Partisi Logical dapat menampung berbagai macam file data. Di partisi ini tidak terdapat sistem operasi seperti Partisi Primary, karena sistem operasi tidak mengenal partisi logical sebagai bootable, walaupun nantinya kita dapat memberikannya sistem ketika proses pemformatan, partisi ini biasanya dikenal sebagai drive berikutnya.</P>
+              
+            <h4>Cara membuat partisi.</h4>
+              <h5>Menggunakan fdisk :</h5>
+                <pre><strong>$ sudo fdisk /dev/sdb</strong></pre>
+                <p>lalu tekan <strong>n</strong> untuk membuat partisi dan lanjut click enter saja sampai yang <strong>ketiga</strong> kalian harus mengisi berapa ukuran partisi yang ingin kalian buat.Jika kalian sudah selesai jangan lupa kalian untuk mengesavenya dengan menekan <strong>w</strong> dikarenakan jika tidak maka partisi yang anda buat tadi akan hilang.<br>
+                Jika anda bingung maka anda bisa mengetik huruf <strong>m</strong> untuk help.</p>
+              
+              <h5>Menggunakan parted :</h5>
+                <pre><strong>$ sudo parted /dev/sdb</strong></pre>
+                <P>lalu ketikan <strong>mkpart</strong> untuk membuat partisi dan lanjut click enter saja sampi yang <strong>ketiga</strong> kalian bisa memberikan file system type dengan default linux sebagai berikut, <strong>ext4</strong> dan selanjutnya isi berapa banyak anda ingin membuat partisi,lalu batas partisi yang ingin dibuat.<br>
+                Jika anda bingung maka anda bisa mengetikkan <strong>help</strong>.</P>
+              
+              
+            <h4>Cara menghapus partisi :</h4>
+              <h5>Menggunakan fdisk :</h5>
+                <pre>$ sudo fdisk /dev/sdb</pre>
+                <P>nah kalo ini jika kalian telah masuk,maka tekan <strong>d</strong> dan enter untuk menghapus partisi.</P>
+              
+              <h5>Menggunakan parted :</h5>
+                <pre>$ sudo parted /dev/sdb</pre>
+                <P>nah jika kalian sudah masuk maka tinggal kalian tulis <strong>rm</strong> lalu click enter.</P>
+              
+            <h4>cara melihat partisi :</h4>
+              <pre><strong>lsblk</strong></pre>
+                
+            <p>Semoga berhasil mencoba kawan.jika terjadi error atau hal lain maka bisa chat dengan admin lewat medsos dibawah.</p>
+            
+       <h4>Referensi :</h4>
+              <li><a href="https://lisaainurohmahgmail.wordpress.com/2016/12/29/pengertian-partisi-harddisk-fungsi-dan-tipe-tipenya/">https://lisaainurohmahgmail.wordpress.com</a></li>
+              
+        <h4><center>Terima Kasih</center></h4>
+             
+         </div>
+        </div>
+      </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+               <li class="list-inline-item">
+                <a href="https://www.facebook.com/mikel.uuppz">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://github.com/fesasabil">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+                <li class="list-inline-item">
+                <a href="https://www.instagram.com/sabili.feaslucu">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <p class="copyright text-muted">Copyright &copy; azzaid Website 2018</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/clean-blog.min.js"></script>
+
+  </body>
+
+</html>
