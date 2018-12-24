@@ -53,7 +53,7 @@
     </nav>
 
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('img/qemu.jpg')">
+    <header class="masthead" style="background-image: url('img/partisi.png')">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
@@ -103,30 +103,44 @@
               <li><strong>Partisi Logical.</strong></li>
               <P>Partisi Logical merupakan partisi sampingan yang terdapat pada Partisi Extended. Partisi Logical dapat menampung berbagai macam file data. Di partisi ini tidak terdapat sistem operasi seperti Partisi Primary, karena sistem operasi tidak mengenal partisi logical sebagai bootable, walaupun nantinya kita dapat memberikannya sistem ketika proses pemformatan, partisi ini biasanya dikenal sebagai drive berikutnya.</P>
               
-        <h4>Beberapa configure partisi.</h4>
-              <h5>Cara membuat partisi :</h5>
-                <li>Kita akan membuat partisi dengan fdisk.ikuti langkah berikut :</li>
-                <pre><strong>$ sudo fdisk /dev/sdb</strong></pre>
-                <p>lalu tekan <strong>n</strong> untuk membuat partisi dan lanjut click enter saja sampai yang <strong>ketiga</strong> kalian harus mengisi berapa ukuran partisi yang ingin kalian buat.Jika kalian sudah selesai jangan lupa kalian untuk mengesavenya dengan menekan <strong>w</strong> dikarenakan jika tidak maka partisi yang anda buat tadi akan hilang.<br>
-                Jika anda bingung maka anda bisa mengetik huruf <strong>m</strong> untuk help.</p>
+            <h4>Cara membuat partisi.</h4>
+              <p>Tapi sebelum anda melakukan configure ini lebih baik anda melakukannya di <strong>virtual box</strong> dengan mendownloadnya disini <a href="http://tanyaomjack.blogspot.com/2016/08/cara-menginstall-virtualbox-di-linux.html">http://tanyaomjack.blogspot.com</a></p>
+              <h5>Menggunakan fdisk :</h5>
+                <pre><strong>$ sudo fdisk /dev/sdb(sesuai nama device dicomputer anda</strong></pre>
+                <pre>Command (m for help): n (Membuat partisi)
+Partition number (3-128, default 3): (Nomer partisi yang kita buat.) 
+First sector (2050048-2415940, default 2050048): (Sector awal yang akan digunakan untuk membuat partisi)
+Last sector, +sectors or +size{K,M,G,T,P} (2050048-2415940, default 2415940): (Batas akhir membuat patisi)
+                </pre>
+                <p>Jika anda bingung maka anda bisa mengetik huruf <strong>m</strong> untuk help.</p>
               
-                <li>Kita akan membuat partisi dengan parted.ikuti perintah berikut :</li>
+              <h5>Menggunakan parted :</h5>
                 <pre><strong>$ sudo parted /dev/sdb</strong></pre>
-                <P>lalu ketikan <strong>mkpart</strong> untuk membuat partisi dan lanjut click enter saja sampi yang <strong>ketiga</strong> kalian bisa memberikan file system type dengan default linux sebagai berikut, <strong>ext4</strong> dan selanjutnya isi berapa banyak anda ingin membuat partisi,lalu batas partisi yang ingin dibuat.<br>
-                Jika anda bingung maka anda bisa mengetikkan <strong>help</strong>.</P>
+                <pre>(parted) mkpart (Membuat partisi)                                                           
+Partition name?  []?  (Nama partisi dan jika tidak mengisi silahkan enter saja.)                                                    
+File system type?  [ext2]? ext4  (file system kita tetapi saya disini memakai file system default linux terbaru)                                         
+Start? 920  (Sector awal membuat pertisi)                                                               
+End? 1000   (Sector akhir atau batas akhir membuat partisi)                             </pre>
+                <p>Jika anda bingung maka anda bisa mengetikkan <strong>help</strong>.</p>
               
               
-            <h5>Cara menghapus partisi :</h5>
-              <li>Kita akan menghapus dengan fdisk</li>
+            <h4>Cara menghapus partisi :</h4>
+              <h5>Menggunakan fdisk :</h5>
+              <pre><strong>$ sudo fdisk /dev/sdb</strong></pre>
+                <P>nah kalo ini jika kalian telah masuk,maka tekan <strong>d</strong> dan enter untuk menghapus partisi.</P>
+              
+              <h5>Menggunakan parted :</h5>
+              <pre><strong>$ sudo parted /dev/sdb</strong></pre>
+                <P>nah jika kalian sudah masuk maka tinggal kalian tulis <strong>rm (Number pasrtisi yang ingin dihapus)</strong> lalu click enter.</P>
+              
+            <h4>cara melihat partisi :</h4>
+              <pre><strong>$ lsblk</strong></pre>
                 
-                
-                
-                
-              <p>Semoga berhasil mencoba kawan.jika terjadi error atau hal lain maka bisa chat dengan admin lewat medsos dibawah.</p>
+            <p>Semoga berhasil mencoba kawan.jika terjadi error atau hal lain maka bisa chat dengan admin lewat medsos dibawah.</p>
             
        <h4>Referensi :</h4>
               <li><a href="https://lisaainurohmahgmail.wordpress.com/2016/12/29/pengertian-partisi-harddisk-fungsi-dan-tipe-tipenya/">https://lisaainurohmahgmail.wordpress.com</a></li>
-              <li><a href="http://ilmukomputer.org/2013/04/21/qemu-virtual-machine-yang-ringan/">http://ilmukomputer.org</a></li><br>
+              <li><a href="https://linuxacademy.com/cp/courses/lesson/course/1803/lesson/1/module/173">https://linuxacademy.com</a></li>
               
         <h4><center>Terima Kasih</center></h4>
              
