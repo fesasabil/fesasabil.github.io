@@ -53,18 +53,18 @@
     </nav>
 
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('img/mount1.jpeg')">
+    <header class="masthead" style="background-image: url('img/swap.jpeg')">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="post-heading">
-              <h1>Mengenal Mount dan Cara penggunaannya</h1>
-              <h2 class="subhead(ing">Pengertian dan Tutorial menggunakan Mount secara otomatis saat direboot
+              <h1>Mengenal Swap dan Cara penggunaannya</h1>
+              <h2 class="subhead(ing">Pengertian dan penggunaan Swap
               </h2>
               <span class="meta">Posted by
                 <a href="#">azzaid</a>
-                on December 25, 2018</span>
+                on December 26, 2018</span>
             </div>
           </div>
         </div>
@@ -76,48 +76,50 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
-        <h3>Pengertian Mount :</h3>
-              <p><I> Mount</I> adalah  sebuah proses software yang mengaktifkan disk tersebut sehingga folder dan file di dalam disk dapat dibaca oleh sistem komputer. Jika sebuah hard drive terhubung secara fisik dengan port sistem komputer, tetapi tidak di-mount, maka sistem komputer tetap tidak mengenali perangkat yang terhubung itu.<br>
-              Perintah mount ini, termasuk perintah yang sering digunakan di Linux. Perintah ini digunakan untuk menempelkan atau mentautkan media (hardisk, flashdisk, MMC, MicroSD, dll) ke dalam directory yang kita inginkan. Dengan munculnya kernel Linux yang terbaru saat ini, untuk membaca media-media penyimpanan cukup mudah dan rata-rata plug and play jadi cukup ditancapkan saja. Media-media tersebut langsung dikenali atau langsung terbaca. Berbeda dengan kernel Linux yang lama, untuk membaca media seperti Flashdisk, harus compile kernel. </p>
+        <h3>Pengertian Swap :</h3>
+              <p><I> Swap</I> adalah  ruang pada Hardisk yang dijadikan ruang Virtual Memori (memory bayangan), yang digunakan ketika komputer membutuhkan lebih banyak memory dan space.</p>
               
-         <h4>Tutorial menggunakan Mount secara otomatis :</h4>
-            <h5>Mengetahui UUID partisi kita terlebih dahulu dan memastikan apakah jenis partisi kita sudah ext4 atau belum :</h5>
-              <pre><strong>$ sudo blkid</strong></pre>
-              <img src="img/mount.png" alt="placeholder" data-action="zoom"><br><br>
+         <h4>Fungsi Swap :</h4>
+           <p>sebagai memori tambahan untuk memori fisik (RAM) dikomputer kita. Di semua system operasi (termasuk Linux) memori mempunyai fungsi sebagai tempat untuk penyimpanan sementara berbagai macam modul dan driver-driver yang dibutuhkan untuk menjalankan suatu system operasi, yang sekaligus juga digunaka untuk menjalankan aplikasi-aplikasi yang kita jalankan, kekurangan dari memori fisik adalah kapasitasnya yang relatif kecil, sehingga terkadang system terasa lambat dikarenakan penggunaan memori fisik di system telah penuh terpakai, untuk mengatasi hal tersebut maka digunakanlah suatu metode yang dikenal dengan Virtual Memori, di sistem Linux memori bayangan ini biasanya merupakan suatu partisi di hardisk yang mempunyai tipe file sistem Linux Swap, akan tetapi sebenarnya di Linux kita bisa membuat ataupun menambahkan Virtual Memori tanpa mengubah partisi di hardisk yaitu dengan menggunakan file yang mempunyai ekstensi (jenis file) misalnya contoh.swp yang akan kita gunakan sebagai Virtual Memory. </p>
               
-            <h5>Mengubah jenis partisi menjadi ext4 :</h5>
-              <pre><strong>$ sudo mkfs -t ext4 /dev/sdb1</strong></pre>
-              <P>Jika partisi kalian belum diubah menjadi ext4 maka kalian harus merubahnya menjadi ext4 dengan command diatas dan yang <strong>/dev/sdb1</strong> itu harus mengarah ke partisi kalian.</P> 
+        <h4>Beberapa Configure dalam RAM :</h4>
+            <h5>Cara membuat Swapfile :</h5>
+              <pre><strong>$ sudo dd if=/dev/zero of=/root/myswapfile bs=1M count=1024</strong></pre>
+              <p>Untuk yang setelah <strong>/root</strong> itu hanya penamaan saja jadi terserah kalian ingin memberi nama apa saja.</p>
+              <img src="img/swap1.png" alt="placeholder" data-action="zoom"><br><br>
+             
+            <h5>Mengubah permission file terlebih dahulu :</h5>
+              <pre><strong>$ sudo chmod 600 /root/myswapfile</strong></pre>
+              <p>Saya merubah permission terlebih dahulu dikarenakan agar Swap tidak ada yang dapat merubahnya dan dilihat orang lain.</p>
               
-            <h5>Menambahkan UUID di /etc/fstab :</h5>
-              <P>setelah kita mengetahui ID partisi kita dari <strong>blkid</strong> maka kalian copy ID itu lalu ikuti perintah berikut :</P>
+            <h5>Merubah file yang kita buat menjadi swap  :</h5>
+              <pre><strong>$ sudo mkswap /dev/sdb1</strong></pre>
+              <p>fungsi dari mkswap untuk merubah file menjadi swap</p>
+              
+            <h5>Mengaktifkan swap :</h5>
+              <pre><strong>$ sudo swapon /root/myswapfile</strong></pre>
+              <p>itu berfungsi juga untuk mengaktifkan semua Swap kita yang ada dilinux dengan mengganti <strong>/root/myswapfile</strong> menjadi <strong>-a</strong></p>
+              
+            <p>Jika kita ingin menanamkan Swap kita di computer dengan cara berikut :</p>
               <pre><strong>$ sudo nano /etc/fstab</strong></pre>
-              <img src="img/mount2.png" alt="placeholder" data-action="zoom"><br>
+              <pre><strong>/root/myswapfile swap swap defaults 0 0</strong></pre>
               
-              <li><strong>UUID=6f156a1c-3529-4bbf-b08b-5288ca85b6e6</strong> : ini harus kalian isi sesuai yang berada di <strong>blkid</strong></li>
-              <li><strong>/mnt/data</strong> : ini tempat partisi yang ingin kalian mount.</li>
-              <li><strong>ext4</strong> : jenis hardisk kalian,disini saya menggunakan defaults Linux</li>
-              <li><strong>defaults</strong> : ini saya mengikuti defaults maka kita isi dengan defaults saja.</li>
-              <li><strong>0 2</strong> : ini merupakan nomer urut partisi kita yang akan dibooting,dan urutan booting berawal dari <strong>0 0</strong></li>
+            <h5>Mengecek Swap :</h5>
+              <pre><strong>$ sudo free -mt</strong></pre>
               
-            <h5>Mengecek partisi dan untuk mengetahui apakah sudah berjalan ataupun belum :</h5>
-              <pre><strong>$ sudo reboot</strong></pre>
-              <p>Jika kalian mengalami error pada saat reboot,maka kalian hanya perlu mengetik kata sandi root anda dan setelah itu kalian harus memeriksanya kembali <strong>nano /etc/fstab</strong> anda.</p>
-              <img src="img/mount3.jpeg" alt="placeholder" data-action="zoom"><br><br>
-              <p>Jika kalian sudah merubahnya kalian hanya perlu <strong>reboot</strong> kembali dan pastinya akan masuk kehalaman dekstop anda.</p>
+              <li>Sebelum menambahkan Swap :</li>
+              <img src="img/swap2.png" alt="placeholder" data-action="zoom"><br><br>
               
-            <h5>Perbedaan yang sebelum dimount otomatis dan sudah :</h5>
-              <li>Sebelum dimount otomatis :</li>
-              <img src="img/mount5.png" alt="placeholder" data-action="zoom"><br><br>
+              <li>Sesudah menambahkan Swap :</li>
+              <img src="img/swap3.png" alt="placeholder" data-action="zoom">
               
-              <li>Sesedah dimount otomatis :</li>
-              <img src="img/mount4.png" alt="placeholder" data-action="zoom">
+            <h5>Menghapus Swap :</h5>
+              <pre><strong>$ sudo rm /root/myswapfile</strong></pre>
               
             <p>Semoga berhasil mencoba kawan.jika terjadi error atau hal lain maka bisa chat dengan admin lewat medsos dibawah.</p>
-             
        <h4>Referensi :</h4>
-              <li><a href="https://mtsnturen.wordpress.com/2012/07/11/perintah-mount-linux/">https://mtsnturen.wordpress.com</a></li>
-              <li><a href="https://linuxacademy.com/cp/courses/lesson/course/1803/lesson/2/module/173"></a>https://linuxacademy.com</li>
+              <li><a href="http://masrifqi.staff.ugm.ac.id/index.php/2006/09/menambahkan-swap-di-linux-2/">http://masrifqi.staff.ugm.ac.id</a></li>
+              <li><a href="https://linuxacademy.com/cp/courses/lesson/course/1803/lesson/5/module/173"></a>https://linuxacademy.com</li>
               
         <h4><center>Terima Kasih</center></h4>
              
