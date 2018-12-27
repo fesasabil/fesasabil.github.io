@@ -53,18 +53,18 @@
     </nav>
 
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('img/swap.jpeg')">
+    <header class="masthead" style="background-image: url('img/encrypt.png')">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="post-heading">
-              <h1>Mengenal Swap dan Cara penggunaannya</h1>
-              <h2 class="subhead(ing">Pengertian dan penggunaan Swap
+              <h1>Mengenal Encrypt partisi dan Cara penggunaannya</h1>
+              <h2 class="subhead(ing">Pengertian dan configure Encypt partisi
               </h2>
               <span class="meta">Posted by
                 <a href="#">azzaid</a>
-                on December 26, 2018</span>
+                on December 27, 2018</span>
             </div>
           </div>
         </div>
@@ -76,50 +76,52 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
-        <h3>Pengertian Swap :</h3>
-              <p><I> Swap</I> adalah  ruang pada Hardisk yang dijadikan ruang Virtual Memori (memory bayangan), yang digunakan ketika komputer membutuhkan lebih banyak memory dan space.</p>
+        <h3>Pengertian Encrypt :</h3>
+              <p><I> Encrypt</I> adalah  proses mengamankan suatu informasi dengan membuat informasi tersebut tidak dapat dibaca tanpa bantuan pengetahuan khusus. Dikarenakan enkripsi telah digunakan untuk mengamankan komunikasi di berbagai negara, hanya organisasi-organisasi tertentu dan individu yang memiliki kepentingan yang sangat mendesak akan kerahasiaan yang menggunakan enkripsi. Di pertengahan tahun 1970-an, enkripsi kuat dimanfaatkan untuk pengamanan oleh sekretariat agen pemerintah Amerika Serikat pada domain publik, dan saat ini enkripsi telah digunakan pada sistem secara luas, seperti Internet e-commerce, jaringan Telepon bergerak dan ATM pada bank..</p>
               
-         <h4>Fungsi Swap :</h4>
-           <p>sebagai memori tambahan untuk memori fisik (RAM) dikomputer kita. Di semua system operasi (termasuk Linux) memori mempunyai fungsi sebagai tempat untuk penyimpanan sementara berbagai macam modul dan driver-driver yang dibutuhkan untuk menjalankan suatu system operasi, yang sekaligus juga digunaka untuk menjalankan aplikasi-aplikasi yang kita jalankan, kekurangan dari memori fisik adalah kapasitasnya yang relatif kecil, sehingga terkadang system terasa lambat dikarenakan penggunaan memori fisik di system telah penuh terpakai, untuk mengatasi hal tersebut maka digunakanlah suatu metode yang dikenal dengan Virtual Memori, di sistem Linux memori bayangan ini biasanya merupakan suatu partisi di hardisk yang mempunyai tipe file sistem Linux Swap, akan tetapi sebenarnya di Linux kita bisa membuat ataupun menambahkan Virtual Memori tanpa mengubah partisi di hardisk yaitu dengan menggunakan file yang mempunyai ekstensi (jenis file) misalnya contoh.swp yang akan kita gunakan sebagai Virtual Memory. </p>
-              
-        <h4>Beberapa Configure Swap :</h4>
-            <h5>Cara membuat Swapfile :</h5>
-              <pre><strong>$ sudo dd if=/dev/zero of=/root/myswapfile bs=1M count=1024</strong></pre>
-              <p>Untuk yang setelah <strong>/root</strong> itu hanya penamaan saja jadi terserah kalian ingin memberi nama apa saja.</p>
-              <img src="img/swap1.png" alt="placeholder" data-action="zoom"><br><br>
+        <h4>Beberapa Configure Encrypt :</h4>
+            <h5>Mengecek Encrypt :</h5>
+              <pre><strong>$ sudo grep -i config_dm_crypt /boot/config-$(uname -r)</strong></pre>
+              <p>pengecekan ini bertujuan apakah computer yang kita gunakan support dengan <strong>Encrypt</strong>.</p>
              
-            <h5>Mengubah permission file terlebih dahulu :</h5>
-              <pre><strong>$ sudo chmod 600 /root/myswapfile</strong></pre>
-              <p>Saya merubah permission terlebih dahulu dikarenakan agar Swap tidak ada yang dapat merubahnya dan dilihat orang lain.</p>
+            <h5>Menginstall Encrypt :</h5>
+              <pre><strong>$ sudo apt-get install cryptsetup</strong></pre>
+              <p>Setelah itu kalian pilih partisi mana yang akan kalian encrypt.</p>
               
-            <h5>Merubah file yang kita buat menjadi swap  :</h5>
-              <pre><strong>$ sudo mkswap /dev/sdb1</strong></pre>
-              <p>fungsi dari mkswap untuk merubah file menjadi swap</p>
+            <h5>Membuat Encrypt :</h5>
+              <pre><strong>$ sudo cryptsetup -y luksFormat /dev/sdb1</strong></pre>
+              <p>Saya disini menggunakan pertisi <strong>sdb1</strong> untuk di encrypt.Setelah itu kalian tulis <strong>"YES"</strong>.<br>
+              Lalu masukkan password anda,akan tetapi perlu diingat sistem tidak akan menerima password yang <strong>simple</strong>.</p>
               
-            <h5>Mengaktifkan swap :</h5>
-              <pre><strong>$ sudo swapon /root/myswapfile</strong></pre>
-              <p>itu berfungsi juga untuk mengaktifkan semua Swap kita yang ada dilinux dengan mengganti <strong>/root/myswapfile</strong> menjadi <strong>-a</strong></p>
+            <h5>Membuka Encrypt :</h5>
+              <pre><strong>$ sudo cryptsetup luksOpen /dev/sdb1 mysecret</strong></pre>
+              <p>anda jangan terpaku dengan nama setelah <strong>/sdb1</strong> dikarenakan itu hanya penamaan saja jadi kalian bebas menamakannya.<br>
+              lalu masukkan password yang kalian buat tadi.</p> 
               
-            <p>Jika kita ingin menanamkan Swap kita di computer dengan cara berikut :</p>
-              <pre><strong>$ sudo nano /etc/fstab</strong></pre>
-              <pre><strong>/root/myswapfile swap swap defaults 0 0</strong></pre>
+            <h5>Mengecek Encrypt :</h5>
+              <pre><strong>$ lsblk</strong></pre>
+              <p>Jika berhasil maka akan ada perubahan seperti berikut :</p>
+              <img src="img/encrypt1.png" alt="placeholder" data-action="zoom"><br><br>
               
-            <h5>Mengecek Swap :</h5>
-              <pre><strong>$ sudo free -mt</strong></pre>
+            <h5>Mengubah file system :</h5>
+              <pre><strong>$ sudo mkfs -t ext4 /dev/mapper/mysecret</strong></pre>
               
-              <li>Sebelum menambahkan Swap :</li>
-              <img src="img/swap2.png" alt="placeholder" data-action="zoom"><br><br>
               
-              <li>Sesudah menambahkan Swap :</li>
-              <img src="img/swap3.png" alt="placeholder" data-action="zoom">
+            <h5>Memount Encrypt partisi :</h5>
+              <pre><strong>$ sudo mount /dev/mapper/mysecret</strong></pre>
+              <p>lalu dicek kembali dengan <strong>lsblk</strong> atau <strong>df -h</strong></p>
               
-            <h5>Menghapus Swap :</h5>
-              <pre><strong>$ sudo rm /root/myswapfile</strong></pre>
+            <h5>Mengunci Encrypt :</h5>
+              <p>Sebelum kita mengunci kita harus mengumount terlebih dahulu : </p>
+              <pre><strong>$ sudo umount /dev/mapper/mysecret</strong></pre>
+              
+              <p>lalu kita akan menguncinya :</p>
+              <pre><strong>$ sudo cryptsetup luksClose /dev/sdb1 mysecret</strong></pre>
               
             <p>Semoga berhasil mencoba kawan.jika terjadi error atau hal lain maka bisa chat dengan admin lewat medsos dibawah.</p>
        <h4>Referensi :</h4>
-              <li><a href="http://masrifqi.staff.ugm.ac.id/index.php/2006/09/menambahkan-swap-di-linux-2/">http://masrifqi.staff.ugm.ac.id</a></li>
-              <li><a href="https://linuxacademy.com/cp/courses/lesson/course/1803/lesson/5/module/173"></a>https://linuxacademy.com</li>
+              <li><a href="https://id.wikipedia.org/wiki/Enkripsi">https://id.wikipedia.org</a></li>
+              <li><a href="https://linuxacademy.com/cp/courses/lesson/course/1803/lesson/3/module/173"></a>https://linuxacademy.com</li>
               
         <h4><center>Terima Kasih</center></h4>
              
