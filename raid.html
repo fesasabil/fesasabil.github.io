@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+      <title>azzaid Blog -  Linux</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">azzaid Creative</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Technology.html">Sample Post</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('img/raid.jpeg')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-heading">
+              <h1>Mengenal Raid(Redundant Array of Independent Disks) dan Cara penggunaannya</h1>
+              <h2 class="subhead(ing">Pengertian dan configure Raid
+              </h2>
+              <span class="meta">Posted by
+                <a href="#">azzaid</a>
+                on December 31, 2018</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+        <h3>Pengertian Raid(Redundant Array of Independent Disks) :</h3>
+              <p><I> Raid(Redundant Array of Independent Disks)</I> adalah  organisasi disk memory yang dapat mengatasi sejumlah disk dengan system akses nya parallel dan redundansi di tambah kan untuk memberikan peningkatan reliabilitas. Kerja parallel ini memberikan hasil resultan kelajuan disk yang akan lebih cepat.<br>
+              Penggunaan istilah RAID pertama kali diperkenalkan oleh David A. Patterson, Garth A. Gibson dan Randy Katz dari University of California, Berkeley, Amerika Serikat pada tahun 1987. Tetapi walaupun mereka yang menggunakan istilah RAID pertama kali, tetapi hak paten RAID sejatinya dimiliki oleh Norman Ken Ouchi dari IBM, yang pada tahun 1978.</p>
+              
+        <h4>RAID memiliki sebanyak 3 karakteristik umum, dan ketiga karakteristik umum tersebut itu ialah :</h4>
+            <li>Data nya di distribusikan pada drive fisik array</li>
+            <li>RAID merupakan sekumpulan dist drive yang di klaim sebagai system tunggal pada disk</li>
+            <li>Kapasitas redundant disk di pakai untuk menyimpan informasi paritas, yang sudah menjamin recoverability data pada saat terjadi kegagalan disk atau terjadi suatu masalah.</li>
+              
+        <h4>Beberapa macam Raid :</h4>
+            <li><strong>RAID level 0 :</strong></li>
+              <p>Raid pada level 0 ini memakai sekumpulan disk dengan striping di level biok, tanpda adanya redundansi. Maka dari itu ia hanya menyimpan dan melakukan striping blok data di dalam sejumlah disk. Level 0 ini sesungguh nya tidak termasuk di dalam kelompok RAID, hal ini di karenakan level 0 tidak memakai redundansi dalam peningkatan kinerja nya tersebut.</p>
+              
+            <li><strong>RAID level 1 :</strong></li>
+              <p>RAID level 1 adalah disk mirroring, memalsukan atau menduplikat di masing masing disk. Langkah langkah ini bisa memberikan peningkatan terhadap kinerja disk, namun jumlah disk yang di perlukan juga berubah menjadi 2 kali lipat. Maka dari itu dana nya menjadi sangat lah mahal.</p>
+              
+            <li><strong>RAID level 2 :</strong></li>
+              <p>RAID level 2 ini adalah pengorganisasian dengan error – correcting – code (ECC). Seperti di memory server EEC yang di mana pendeteksian titik terjadinya error memakai paritas bit. Di masingn masing byte data memiliki suatu paritas yang bersesuaian yang merepresentasi kan jumlah bit pada byte data tersebut, yang dimana paritas bit = 0 apabila jumlah bit parasite = 1 atau ganjil atau parasitas bit=0 genap.<br>
+              Jadi apabila salah satu dari bit di data berubah, parasitas berubah dan tidak cocok dengan parasitas bit yang sudah tersave atau tersimpan. Dengan begitu, jika terjadi suatu masalah atau kegagalan di salah satu disk, data bisa di bentuk ulang dengan mendeteksi atau reading error – correction bit di disk yang lain nya.</p>
+              
+            <li><strong>RAID LEVEL 3 :</strong></li>
+              <p>RAID LEVEL 3 adalah suatu pengorganisasian dengan paritas bit interleaved. Dalam pengorganisasian level ini hampir sama hal nya dengan RAID level 2, hanya saja pada RAID Level 3 ini membutuhkan suatu disk redundan, seberapa pun banyak atau jumlah dari kumpulan disk nya.</p>
+              
+            <li><strong>RAID Level 4 :</strong></li>
+              <p>RAID Level 4 ini adalah suatu pengorganisasian dengan paritas blok interleaved, yakni memakai striping data di level blok, dengan mengesave atau menyimpan suatu paritas blok di suatu disk yang berlainan untuk masing masing blok data di disk lain yang saling bersesuaian.</p>
+              
+            <li><strong>RAID level 5 :</strong></li>
+              <p>RAID Level 5 ini adalah suatu pengorganisasian dengan paritas blok interleaved yang tersebar. Paritas dan juga data yang di sebar di seluruh disk termasuk pada suatu disk tambahan nya.</p>
+              
+            <li><strong>RAID Level 6 :</strong></li>
+              <p>Untuk RAID Level 6 ini dinamai juga dengan redundansi p + q, seperti hal nya pada RAID level 5, namun menyimpan sebuah informasi redundan tambahan yang nantinya berguna untuk mengantisipasi terjadinya kegagalan dari sejumlah disk secara bersamaan.</p>
+              
+            <li><strong>RAID Level 10 :</strong></li>
+              <p>RAID 10 biasa juga disebut dengan RAID 1+0 atau RAID 1 dan 0, mirip dengan RAID 0+1, cuma perbedaanya adalah penggunaan level RAID nya dibalik. RAID 10 sebenarnya bukan level standar RAID yang diciptakan untuk driver Linux MD. RAID 10 membutuhkan minimal 4 buah hardisk.<br>
+              RAID 10 adalah kombinasi antara RAID 0 (data striping) dan RAID 1 (mirroring). Memiliki performa baca/tulis dan redundansi data tertinggi (memiliki toleransi kerusakan hingga beberapa hardisk). RAID 10 memiliki toleransi kerusakan 1 hardisk per mirror stripe.<br>
+              RAID 10 biasanya banyak diimplementasikan pada database, web server dan server aplikasi atau server-server yang membutuhkan performa hardisk tinggi.</p>
+              
+            <li><strong>RAID Level 50 :</strong></li>
+              <p>RAID 50 (atau juga disebut dengan RAID 5+0) merupakan kombinasi block-level striping dari RAID 0 dengan distribusi parity dari RAID 5. RAID 50 membutuhkan minimal 6 hardisk.<br>
+              Jika salah satu hardisk dari masing-masing RAID 5 ada yang rusak, data akan tetap aman. Akan tetapi jika hardisk yang rusak tidak segera diganti, dan hardisk dari RAID 5 tersebut ada yang rusak lagi, maka semua data di RAID 50 akan rusak. Penggantian hardisk harus dilakukan agar data tetap terjaga redundansinya.</p>
+              
+            <li><strong>RAID Level 60 :</strong></li>
+              <p>RAID 60 (atau juga disebut dengan RAID 6+0) merupakan kombinasi block-level striping dari RAID 0 dengan distribusi parity dari RAID 6. RAID 60 membutuhkan minimal 8 hardisk.<br>
+              RAID 50 dan RAID 60 tidak banyak perbedaan, yang membedakan hanya pada toleransi kerusakan hardisk. Jika pada RAID 50 toleransi kerusakannya 1 hardisk per sub-array, sedang di RAID 60 adalah 2 hardisk per sub-array.</p>
+              
+        <h4>Beberapa configure Raid :</h4>
+            <h5>Membuat partisi :</h5>
+              <pre><strong>$ sudo fdisk /dev/sdb(sesuai nama device dicomputer anda)</strong></pre>
+              <pre>Command (m for help): n (Membuat partisi)
+Partition number (3-128, default 3): (Nomer partisi yang kita buat.) 
+First sector (2050048-2415940, default 2050048): (Sector awal yang akan digunakan untuk membuat partisi)
+Last sector, +sectors or +size{K,M,G,T,P} (2050048-2415940, default 2415940): (Batas akhir membuat patisi)</pre>
+              
+              <p>Jika anda bingung maka anda bisa mengetik huruf <strong>m</strong> untuk help.</p>
+              
+            <h5>Mengubah partisi menjadi Raid :</h5>
+              <pre><strong>$ sudo fdisk /dev/sdb</strong></pre>
+              <p>lalu kalian bisa mengecek nomer berapa kah untuk membuat menjadi LVM dengan menggunakan <strong>"l"</strong> karena setiap OS berbeda nomernya.</p>
+              <pre>18  AST SmartSleep  65  Novell Netware  b8  BSDI swap       fc  VMware VMKCORE 
+1b  Hidden W95 FAT3 70  DiskSecure Mult bb  Boot Wizard hid <strong>fd  Linux raid auto</strong>
+1c  Hidden W95 FAT3 75  PC/IX           bc  Acronis FAT32 L fe  LANstep        
+1e  Hidden W95 FAT1 80  Old Minix       be  Solaris boot    ff  BBT      </pre>
+              
+            <h5>Menginstall mdadm :</h5>
+              <pre><strong>$ sudo apt-get install mdadm</strong></pre>
+              
+            <h5>Membuat mdadm :</h5>
+              <pre><strong>$ sudo mdadm --create --verbose /dev/md0 --level=stripe --raid-devices=2 /dev/sdb1 /dev/sdb2</strong></pre>
+              <p>ikuti saja semua akan tetapi untuk memilih <strong>level</strong> kalian bebas ingin menggunakan <I>Raid</I> mana saja dan untuk <strong>raid-devices</strong> itu partisi mana saja yang ingin kalian gunakan.</p>
+            
+            <h5>Mengecek Raid :</h5>
+              <pre><strong>$ cat /proc/mdstat</strong></pre>
+              <img src="img/raid1.png" alt="placeholder" data-action="zoom"><br><br>
+              <pre><strong>$ sudo mdadm --detail /dev/md0</strong></pre>
+              <img src="img/raid2.png" alt="placeholder" data-action="zoom">
+              
+            <h5>Mengubah file system :</h5>
+              <pre><strong>$ sudo mkfs -t ext4 /dev/md0</strong></pre>
+              
+            <h5>Memount mdadm :</h5>
+              <pre><strong>$ sudo mount /dev/md0 /mnt</strong></pre>
+              <p>lalu dicek kembali dengan <strong>lsblk</strong> atau <strong>df -h</strong></p>
+              
+            <h5>Menampilkan UUID mdadm :</h5>
+              <pre><strong>$ sudo mdadm --detail --scan</strong></pre>
+              
+            <h5>Menambahkan UUID ke mdadm.conf :</h5>
+              <pre><strong>$ sudo nano /etc/mdadm/mdadm.conf</strong></pre>
+              <p>Copy semua yang kalian dapat dari perintah sebelum ini lalu letakkan paling bawah dan save.</p>
+              
+            <h5>Menambahkan assemble :</h5>
+              <pre><strong>$ sudo mdadm --assemble --scan</strong></pre>
+              
+            <h5>Mengupdate mdadm :</h5>
+              <pre><strong>$ sudo update-rc.d mdadm defaults</strong></pre>
+              
+            <h5>Mengaktifkan Devices :</h5>
+              <pre><strong>$ sudo nano /etc/default/mdadm</strong></pre>
+              <p>lalu tambahkan <strong>AUTOSTART=true</strong> pada kolom paling akhir lalu save.</p>
+              
+            <h5>Menambahkan Devices :</h5>
+              <pre><strong>$ sudo mdadm /dev/md0 --add /dev/md1(nama partisi atau devices baru)</strong></pre>
+              
+              
+            <p>Semoga berhasil mencoba kawan.jika terjadi error atau hal lain maka bisa chat dengan admin lewat medsos dibawah.</p>
+       <h4>Referensi :</h4>
+              <li><a href="https://blog.dimensidata.com/pengertian-raid-dan-macam-jenis-level-teknologi-raid/">https://blog.dimensidata.com</a></li>
+              <li><a href="https://linuxacademy.com/cp/courses/lesson/course/1803/lesson/6/module/173"></a>https://linuxacademy.com</li>
+              
+        <h4><center>Terima Kasih</center></h4>
+             
+         </div>
+        </div>
+      </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+               <li class="list-inline-item">
+                <a href="https://www.facebook.com/mikel.uuppz">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://github.com/fesasabil">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+                <li class="list-inline-item">
+                <a href="https://www.instagram.com/sabili.feaslucu">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <p class="copyright text-muted">Copyright &copy; azzaid Website 2018</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/clean-blog.min.js"></script>
+
+  </body>
+
+</html>
