@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+      <title>azzaid Blog -  Linux</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">azzaid Creative</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Technology.html">Sample Post</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('img/encrypt.png')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-heading">
+              <h1>Mengenal Samba dan Cara penggunaannya</h1>
+              <h2 class="subhead(ing">Pengertian dan configure Samba
+              </h2>
+              <span class="meta">Posted by
+                <a href="#">azzaid</a>
+                on January 1, 2019</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+        <h3>Pengertian Samba server :</h3>
+              <p><I> Samba server</I> adalah  program yang dapat menjembatani kompleksitas berbagai platform system operasi Linux(UNIX) dengan mesin Windows yang dijalankan dalam suatu jaringan komputer. Samba merupakan aplikasi dari UNIX dan Linux, yang dikenal dengan SMB(Service Message Block) protocol. Banyak sistem operasi seperti Windows dan OS/2 yang menggunakan SMB untuk menciptakan jaringan client/server. Protokol Samba memungkinkan server Linux/UNIX untuk berkomunikasi dengan mesin client yang mengunakan OS Windows dalam satu jaringan.<br>atau bisa diartikan seperti sebuah software yang bekerja di sistem operasi linux, unix dan windows yang menggunakan protokol network smb (server massage block). Smb adalah sebuah protokol komunikasi data yang juga digunakan oleh Microsoft dan OS/2 untuk menampilkan fungsi jaringan client-server yang menyediakan sharing file dan printer serta tugas-tugas lainnya yang berhubungan.</p>
+              
+        <h4>Fungsi Samba server :</h4>
+            <li>Menghubungkan antara mesin Linux (UNIX) dengan mesin Windows. Sebagai perangkat lunak cukup banyak fungsi yang dapat dilakukan oleh samba software, mulai dari menjembatani sharing file, sharing device, PDC, firewall, DNS, DHCP, FTP, webserver, sebagai gateway, mail server, proxy dan lain-lain. Fasilitas pengremote seperti telnet dan ssh juga tersedia. Salah satu keunggulan lainnya adalah adanya aplikasi pengaturan yang tidak lagi hanya berbasis teks, tetapi juga berbasis grafis yaitu swat. Menempatkan masin Linux/UNIX sebagai PDC (Primary Domain Controller) seperti yang dilakukan oleh NT dalam jaringan Wondows.</li>
+             
+            <li>Samba PDC (Primary Domain Controller) bertujuan sebagai komputer yang akan melakukan validasi user kepada setiap client yang akan bergabung dalam satu domain tertentu, dengan kata lain hanya user yang terdaftar yang diijinkan masuk ke domain tersebut dan mengakses semua fasilitas domain yang disediakan.</li>
+              
+            <li>Dapat berfungsi sebagai domain controller pada jaringan Microsoft Windows.</li>
+              
+        <h4>Beberapa kelebihan samba server :</h4>
+            <li>Gratis atau free</li>
+            <li>Tersedia untuk berbagai macam platform</li>
+            <li>Mudah dikonfigurasi oleh administrator</li>
+            <li>Sudah terhubung langsung dengan jaringan</li>
+            <li>Mudah dikonfigurasi sesuai dengan kebutuhan administrator</li>
+            <li>Mempunyai performa yang maksimal.</li>
+            <li>jarang ditemui masalah dalam penggunaannya di  jaringan</li>
+            <li>Dapat diandalkan karena jarang terjadi kesalahan</li>
+              
+        <h4>Beberapa Configure Samba :</h4>
+            <h5>Menginstall Samba server :</h5>
+              <pre><strong>$ sudo apt-get install -y samba samba-common python-glade2 system-config-samba</strong></pre>
+              <p>Saya disini menggunakan samba <strong>version 4.3.9-Ubuntu</strong></p>
+              
+              <p>Untuk mengkonfigurasi samba, edit file <strong>/etc/samba/smb.conf</strong>. Saya akan menggunakan nano sebagai editor dan membuat cadangan file asli sebelum saya mulai mengubahnya. File cadangan bernama <strong>/etc/samba/smb.conf.bak</strong></p>
+              <pre><strong>$ sudo cp -pf /etc/samba/smb.conf /etc/samba/smb.conf.bak</strong></pre>
+              <pre><strong>$ cat /dev/null  > /etc/samba/smb.conf</strong></pre>
+              
+            <h5>Membuka file configuration samba :</h5>
+              <pre><strong>$ sudo nano /etc/samba/smb.conf</strong></pre>
+              <p>anda jangan terpaku dengan nama setelah <strong>/sdb1</strong> dikarenakan itu hanya penamaan saja jadi kalian bebas menamakannya.<br>
+              lalu masukkan password yang kalian buat tadi.</p> 
+              
+            <h5>Mengecek Encrypt :</h5>
+              <pre><strong>$ lsblk</strong></pre>
+              <p>Jika berhasil maka akan ada perubahan seperti berikut :</p>
+              <img src="img/encrypt1.png" alt="placeholder" data-action="zoom"><br><br>
+              
+            <h5>Mengubah file system :</h5>
+              <pre><strong>$ sudo mkfs -t ext4 /dev/mapper/mysecret</strong></pre>
+              
+              
+            <h5>Memount Encrypt partisi :</h5>
+              <pre><strong>$ sudo mount /dev/mapper/mysecret</strong></pre>
+              <p>lalu dicek kembali dengan <strong>lsblk</strong> atau <strong>df -h</strong></p>
+              
+            <h5>Mengunci Encrypt :</h5>
+              <p>Sebelum kita mengunci kita harus mengumount terlebih dahulu : </p>
+              <pre><strong>$ sudo umount /dev/mapper/mysecret</strong></pre>
+              
+              <p>lalu kita akan menguncinya :</p>
+              <pre><strong>$ sudo cryptsetup luksClose /dev/sdb1 mysecret</strong></pre>
+              
+            <p>Semoga berhasil mencoba kawan.jika terjadi error atau hal lain maka bisa chat dengan admin lewat medsos dibawah.</p>
+       <h4>Referensi :</h4>
+              <li><a href="https://id.wikipedia.org/wiki/Enkripsi">https://id.wikipedia.org</a></li>
+              <li><a href="https://linuxacademy.com/cp/courses/lesson/course/1803/lesson/3/module/173"></a>https://linuxacademy.com</li>
+              
+        <h4><center>Terima Kasih</center></h4>
+             
+         </div>
+        </div>
+      </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+               <li class="list-inline-item">
+                <a href="https://www.facebook.com/mikel.uuppz">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://github.com/fesasabil">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+                <li class="list-inline-item">
+                <a href="https://www.instagram.com/sabili.feaslucu">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <p class="copyright text-muted">Copyright &copy; azzaid Website 2018</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/clean-blog.min.js"></script>
+
+  </body>
+
+</html>
