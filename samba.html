@@ -53,7 +53,7 @@
     </nav>
 
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('img/encrypt.png')">
+    <header class="masthead" style="background-image: url('img/samba.png')">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
@@ -84,7 +84,7 @@
              
             <li>Samba PDC (Primary Domain Controller) bertujuan sebagai komputer yang akan melakukan validasi user kepada setiap client yang akan bergabung dalam satu domain tertentu, dengan kata lain hanya user yang terdaftar yang diijinkan masuk ke domain tersebut dan mengakses semua fasilitas domain yang disediakan.</li>
               
-            <li>Dapat berfungsi sebagai domain controller pada jaringan Microsoft Windows.</li>
+            <li>Dapat berfungsi sebagai domain controller pada jaringan Microsoft Windows.</li><br>
               
         <h4>Beberapa kelebihan samba server :</h4>
             <li>Gratis atau free</li>
@@ -94,7 +94,7 @@
             <li>Mudah dikonfigurasi sesuai dengan kebutuhan administrator</li>
             <li>Mempunyai performa yang maksimal.</li>
             <li>jarang ditemui masalah dalam penggunaannya di  jaringan</li>
-            <li>Dapat diandalkan karena jarang terjadi kesalahan</li>
+            <li>Dapat diandalkan karena jarang terjadi kesalahan</li><br>
               
         <h4>Beberapa Configure Samba :</h4>
             <h5>Menginstall Samba server :</h5>
@@ -105,35 +105,68 @@
               <pre><strong>$ sudo cp -pf /etc/samba/smb.conf /etc/samba/smb.conf.bak</strong></pre>
               <pre><strong>$ cat /dev/null  > /etc/samba/smb.conf</strong></pre>
               
-            <h5>Membuka file configuration samba :</h5>
+            <h5>Menambahkan file di <strong>/etc/nano/samba/smb.conf</strong> :</h5>
               <pre><strong>$ sudo nano /etc/samba/smb.conf</strong></pre>
-              <p>anda jangan terpaku dengan nama setelah <strong>/sdb1</strong> dikarenakan itu hanya penamaan saja jadi kalian bebas menamakannya.<br>
-              lalu masukkan password yang kalian buat tadi.</p> 
+              <p>setelah itu tambahkan file berikut pada bagian paling akhir lalu save .</p>
+              <pre>[global]
+workgroup = WORKGROUP
+server string = Samba Server %v
+netbios name = ubuntu
+security = user
+map to guest = bad user
+dns proxy = no
+
+#============================ Share Definitions ============================== 
+
+[Anonymous]
+path = /samba/anonymous
+browsable =yes
+writable = yes
+guest ok = yes
+read only = no
+force user = nobody</pre>
               
-            <h5>Mengecek Encrypt :</h5>
-              <pre><strong>$ lsblk</strong></pre>
-              <p>Jika berhasil maka akan ada perubahan seperti berikut :</p>
-              <img src="img/encrypt1.png" alt="placeholder" data-action="zoom"><br><br>
+            <h5>Membuat Direktory baru :</h5>
+              <pre><strong>$ sudo mkdir -p /samba/anonymous</strong></pre>
               
-            <h5>Mengubah file system :</h5>
-              <pre><strong>$ sudo mkfs -t ext4 /dev/mapper/mysecret</strong></pre>
+            <h5>Mengganti permission file :</h5>
+              <pre><strong>$ sudo chmod -R 0775 /samba/anonymous</strong></pre>
+              <pre><strong>$ sudo chown -R nobody:nogroup /samba/anonymous</strong></pre>
               
               
-            <h5>Memount Encrypt partisi :</h5>
-              <pre><strong>$ sudo mount /dev/mapper/mysecret</strong></pre>
-              <p>lalu dicek kembali dengan <strong>lsblk</strong> atau <strong>df -h</strong></p>
+            <h5>Merestart samba server :</h5>
+              <pre><strong>$ sudo service smbd restart</strong></pre>
+              <p>Ini kita lakukan untuk menetapkan konfigurasi baru pada samba.</p>
               
-            <h5>Mengunci Encrypt :</h5>
-              <p>Sebelum kita mengunci kita harus mengumount terlebih dahulu : </p>
-              <pre><strong>$ sudo umount /dev/mapper/mysecret</strong></pre>
+            <h5>Menginstall samba client :</h5>
+              <pre><strong>$ sudo apt-get install samba-client samba-common cifs-utils</strong></pre>
               
-              <p>lalu kita akan menguncinya :</p>
-              <pre><strong>$ sudo cryptsetup luksClose /dev/sdb1 mysecret</strong></pre>
+            <h5>Membuat samba client :</h5>
+              <pre><strong>$ sudo smbclient -I (IP client) -U user -L share</strong></pre>
+              <p>setelah <strong>-I</strong> itu masukkan IP samba client kalian lalu masukkan password client kalian.</p>
+              
+            <h5>Membuat smbcredentials :</h5>
+              <p>Sebelum kalian membuat smbcredentials pastikan anda telah berada di folder <strong>/mnt</strong></p>
+              <pre><strong>$ sudo echo "username=user" >. smbcredentials</strong></pre>
+              <pre><strong>$ sudo echo "password=ikitten" >> .smbcredentials</strong></pre>
+              <p>Dan untuk <strong>user dan password</strong> itu terserah kalian ingin menggunakan nama apa saja.</p>
+              
+            <h5>Mengganti permission file :</h5>
+              <pre><strong>$ sudo chmod 600 .smbcredentials</strong></pre>
+              
+            <h5>Menambahkan IP client di /etc/fstab :</h5>
+              <pre><strong>$ sudo nano /etc/fstab</strong></pre>
+              <p>lalu tambahkan berikut pada bagian bawah lalu save.</p>
+              <pre>//192.168.100.110(IP client)/la-share /mnt/samba cifs credentials=/mnt/.smbcredentials,defaults 0 0 </pre>
+              
+            <h5>Mengemount samba :</h5>
+              <pre><strong>$ sudo mount -a</strong></pre>
+              <P>Jika kamu <strong>umount -a</strong> maka kamu tidak akan bisa lagi melihat isi file client</P>
               
             <p>Semoga berhasil mencoba kawan.jika terjadi error atau hal lain maka bisa chat dengan admin lewat medsos dibawah.</p>
        <h4>Referensi :</h4>
-              <li><a href="https://id.wikipedia.org/wiki/Enkripsi">https://id.wikipedia.org</a></li>
-              <li><a href="https://linuxacademy.com/cp/courses/lesson/course/1803/lesson/3/module/173"></a>https://linuxacademy.com</li>
+              <li><a href="https://www.howtoforge.com/tutorial/samba-server-ubuntu-16-04/">https://www.howtoforge.com</a></li>
+              <li><a href="ttps://linuxacademy.com/cp/courses/lesson/course/1803/lesson/7/module/173"></a>https://linuxacademy.com</li>
               
         <h4><center>Terima Kasih</center></h4>
              
