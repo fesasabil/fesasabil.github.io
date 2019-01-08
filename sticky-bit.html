@@ -53,18 +53,18 @@
     </nav>
 
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('img/mount1.jpeg')">
+    <header class="masthead" style="background-image: url('img/swap.jpeg')">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="post-heading">
-              <h1>Mengenal Mount dan Cara penggunaannya</h1>
-              <h2 class="subhead(ing">Pengertian dan Tutorial menggunakan Mount secara otomatis saat direboot
+              <h1>Mengenal Sticky Bit dan Cara penggunaannya</h1>
+              <h2 class="subhead(ing">Pengertian dan configure Sticky Bit
               </h2>
               <span class="meta">Posted by
                 <a href="#">azzaid</a>
-                on December 25, 2018</span>
+                on January 8, 2019</span>
             </div>
           </div>
         </div>
@@ -76,48 +76,39 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
-        <h3>Pengertian Mount :</h3>
-              <p><I> Mount</I> adalah  sebuah proses software yang mengaktifkan disk tersebut sehingga folder dan file di dalam disk dapat dibaca oleh sistem komputer. Jika sebuah hard drive terhubung secara fisik dengan port sistem komputer, tetapi tidak di-mount, maka sistem komputer tetap tidak mengenali perangkat yang terhubung itu.<br>
-              Perintah mount ini, termasuk perintah yang sering digunakan di Linux. Perintah ini digunakan untuk menempelkan atau mentautkan media (hardisk, flashdisk, MMC, MicroSD, dll) ke dalam directory yang kita inginkan. Dengan munculnya kernel Linux yang terbaru saat ini, untuk membaca media-media penyimpanan cukup mudah dan rata-rata plug and play jadi cukup ditancapkan saja. Media-media tersebut langsung dikenali atau langsung terbaca. Berbeda dengan kernel Linux yang lama, untuk membaca media seperti Flashdisk, harus compile kernel. </p>
+        <h3>Pengertian Sticky Bit :</h3>
+              <p><I> Sticky Bit</I> adalah  special permission yang mana hanya pada akun pemilik (user as owner) dan akun root yang bisa menghapus atau me-rename suatu direktori atau berkas. Artinya jika Anda login sebagai Fulan lalu men-sticky bit suatu berkas Anda, lalu ada orang lain ingin me-rename atau menghapusnya ia tidak akan bisa, meskipun kita mengeset permission-nya dengan 777 yang mana seharusnya semua user bisa saja menghapus atau rename direktori. Karena si Fulan men-sticky bit maka user lain yang satu group sekalipun tidak akan bisa. Perlu diketahui untuk menggunakan sticky bit, kita harus mengeset pada top directory / parent directory-nya.</p>
               
-         <h4>Tutorial menggunakan Mount secara otomatis :</h4>
-            <h5>Mengetahui UUID partisi kita terlebih dahulu dan memastikan apakah jenis partisi kita sudah ext4 atau belum :</h5>
-              <pre><strong>$ sudo blkid</strong></pre>
-              <img src="img/mount.png" alt="placeholder" data-action="zoom"><br><br>
+        <h4>Beberapa Configure Sticky Bit :</h4>
+            <h5>Membuat Folder :</h5>
+              <p>Sebelum itu kita harus membuat folder terlebih dahulu,saya disini membuatnya di <strong>/opt/adv-perm</strong> :</p>
+              <pre><strong>$ sudo mkdir saya</strong></pre>
               
-            <h5>Mengubah jenis partisi menjadi ext4 :</h5>
-              <pre><strong>$ sudo mkfs -t ext4 /dev/sdb1</strong></pre>
-              <P>Jika partisi kalian belum diubah menjadi ext4 maka kalian harus merubahnya menjadi ext4 dengan command diatas dan yang <strong>/dev/sdb1</strong> itu harus mengarah ke partisi kalian.</P> 
+            <h5>Merubahnya menjadi Sticky Bit :</h5>
+              <pre><strong>$ sudo chmod 1777 saya(nama folder)</strong></pre>
+              <p>atau</p>
+              <pre><strong>$ sudo chmod +t saya(nama folder)</strong></pre>
+              <p>Sebelum Sticky Bit</p>
+              <img src="img/sticky1.png" alt="placeholder" data-action="zoom">
               
-            <h5>Menambahkan UUID di /etc/fstab :</h5>
-              <P>setelah kita mengetahui ID partisi kita dari <strong>blkid</strong> maka kalian copy ID itu lalu ikuti perintah berikut :</P>
-              <pre><strong>$ sudo nano /etc/fstab</strong></pre>
-              <img src="img/mount2.png" alt="placeholder" data-action="zoom"><br>
+              <p>Sesudah Sticky Bit</p>
+              <img src="img/sticky2.png" alt="placeholder" data-action="zoom">
               
-              <li><strong>UUID=6f156a1c-3529-4bbf-b08b-5288ca85b6e6</strong> : ini harus kalian isi sesuai yang berada di <strong>blkid</strong></li>
-              <li><strong>/mnt/data</strong> : ini tempat partisi yang ingin kalian mount.</li>
-              <li><strong>ext4</strong> : jenis hardisk kalian,disini saya menggunakan defaults Linux</li>
-              <li><strong>defaults</strong> : ini saya mengikuti defaults maka kita isi dengan defaults saja.</li>
-              <li><strong>0 2</strong> : ini merupakan nomer urut partisi kita yang akan dibooting,dan urutan booting berawal dari <strong>0 0</strong></li>
+              <p>Perbedaannya sangat jelas sebelum kita menambahkan Sticky Bit maka pada permission tidak ada huruf <strong>T</strong> dan setelah kita menambahkan Sticky Bit maka kebalikannya.</p>
               
-            <h5>Mengecek partisi dan untuk mengetahui apakah sudah berjalan ataupun belum :</h5>
-              <pre><strong>$ sudo reboot</strong></pre>
-              <p>Jika kalian mengalami error pada saat reboot,maka kalian hanya perlu mengetik kata sandi root anda dan setelah itu kalian harus memeriksanya kembali <strong>nano /etc/fstab</strong> anda.</p>
-              <img src="img/mount3.jpeg" alt="placeholder" data-action="zoom"><br><br>
-              <p>Jika kalian sudah merubahnya kalian hanya perlu <strong>reboot</strong> kembali dan pastinya akan masuk kehalaman dekstop anda.</p>
               
-            <h5>Perbedaan yang sebelum dimount otomatis dan sudah :</h5>
-              <li>Sebelum dimount otomatis :</li>
-              <img src="img/mount5.png" alt="placeholder" data-action="zoom"><br><br>
+            <h5>Mengubah permission groups :</h5>
+              <pre><strong>$ sudo chown root:haza saya(nama folder)</strong></pre>
+              <p>Dan jika kita akan membuat file di dalam folder <strong>saya</strong> maka permission groupsnya akan sama seperti permission groups folder.</p>
               
-              <li>Sesedah dimount otomatis :</li>
-              <img src="img/mount4.png" alt="placeholder" data-action="zoom">
+              <p>Nah jika kalian sudah menambahkan Sticky Bit pada folser kalian maka jika folder itu dihapus oleh user lain tidak akan bisa atau permission denied.</p>
+              <img src="img/sticky3.png" alt="placeholder" data-action="zoom">
               
-            <p>Semoga berhasil mencoba kawan.jika terjadi error atau hal lain maka bisa chat dengan admin lewat medsos dibawah.</p>
-             
+              
+        <p>Semoga berhasil mencoba kawan.jika terjadi error atau hal lain maka bisa chat dengan admin lewat medsos dibawah.</p>
        <h4>Referensi :</h4>
-              <li><a href="https://mtsnturen.wordpress.com/2012/07/11/perintah-mount-linux/">https://mtsnturen.wordpress.com</a></li>
-              <li><a href="https://linuxacademy.com/cp/courses/lesson/course/1803/lesson/2/module/173">https://linuxacademy.com</a></li>
+              <li><a href="https://situsali.com/mengenal-access-permission-sticky-bit-di-gnulinux//">https://situsali.com</a></li>
+              <li><a href="https://linuxacademy.com/cp/courses/lesson/course/1803/lesson/8/module/173">https://linuxacademy.com</a></li>
               
         <h4><center>Terima Kasih</center></h4>
              

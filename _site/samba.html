@@ -142,12 +142,12 @@ force user = nobody</pre>
               <pre><strong>$ sudo apt-get install samba-client samba-common cifs-utils</strong></pre>
               
             <h5>Membuat samba client :</h5>
-              <pre><strong>$ sudo smbclient -I (IP client) -U user -L share</strong></pre>
-              <p>setelah <strong>-I</strong> itu masukkan IP samba client kalian lalu masukkan password client kalian.</p>
+              <pre><strong>$ sudo smbclient -I (IP server) -U user -L share</strong></pre>
+              <p>setelah <strong>-I</strong> itu masukkan IP samba server kalian lalu masukkan password client kalian.</p>
               
             <h5>Membuat smbcredentials :</h5>
               <p>Sebelum kalian membuat smbcredentials pastikan anda telah berada di folder <strong>/mnt</strong></p>
-              <pre><strong>$ sudo echo "username=user" >. smbcredentials</strong></pre>
+              <pre><strong>$ sudo echo "username=user" > .smbcredentials</strong></pre>
               <pre><strong>$ sudo echo "password=ikitten" >> .smbcredentials</strong></pre>
               <p>Dan untuk <strong>user dan password</strong> itu terserah kalian ingin menggunakan nama apa saja.</p>
               
@@ -166,7 +166,7 @@ force user = nobody</pre>
             <p>Semoga berhasil mencoba kawan.jika terjadi error atau hal lain maka bisa chat dengan admin lewat medsos dibawah.</p>
        <h4>Referensi :</h4>
               <li><a href="https://www.howtoforge.com/tutorial/samba-server-ubuntu-16-04/">https://www.howtoforge.com</a></li>
-              <li><a href="ttps://linuxacademy.com/cp/courses/lesson/course/1803/lesson/7/module/173"></a>https://linuxacademy.com</li>
+              <li><a href="https://linuxacademy.com/cp/courses/lesson/course/1803/lesson/7/module/173">https://linuxacademy.com</a></li>
               
         <h4><center>Terima Kasih</center></h4>
              
