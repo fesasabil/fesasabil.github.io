@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+      <title>azzaid Blog -  Linux</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">azzaid Creative</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Technology.html">Sample Post</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('img/swap.jpeg')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-heading">
+              <h1>Mengenal quota dan cara penggunaannya</h1>
+              <h2 class="subhead(ing">pengertian dan configure quota
+              </h2>
+              <span class="meta">Posted by
+                <a href="#">azzaid</a>
+                on January 15, 2019</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <h3>Pengertian Quota :</h3>
+              <p><I>Quota</I> adalah suatu perangkat administrasi sistem yang berfungsi untuk membatasi dan memantau pemakaian suatu partisi oleh user atau pun group.</p>
+
+              <p>Disk quota bisa diterapkan berdasarkan ruang disk <strong>(block quota)</strong> atau berdasarkan jumlah file <strong>(inode quota)</strong>.</p>
+
+            <p>Disk quota bisa diterpakan per user atau per group.</p>
+
+              <li>jika diterapkan <strong>per user</strong> maka quota yang diterapkan mutlak milik user tersebut, misal : user holmes memiliki disk quota 5 MB, maka total 5MB tersebut adalah mutlak milik user holmes.</li><br>
+
+              <li>jika disk quota diterapkan <strong>per group</strong> maka kapasitas yang ditetapkan adalah milik bersama group tersebut, misal : user hulk dan iron man adalah anggota group marvel, jika group marvel diberi quota sebesar 10 MB maka kapasitas tersebut adalah milik user hulk dan iron man, jadi misalkan user hulk menggunakan sebanyak 6MB maka masih terdapat 4MB untuk digunakan oleh user iron man.</li><br>
+
+            <h5>Sebelum kita melanjutkan ke configure quota saya akan menjelaskan sedikit tentang hard limit dan soft limit,berikut penjelasannya :</h5>
+
+            <li><strong>Hard limit</strong> adalah batas yang tidak dapat dilewati, jika user telah mencapai batas hard limit maka user tersebut tidak dapat memasukkan data lagi ke hard disk, contoh jika user optimus memiliki quota 5 MB dan sudah digunakan 4.9 MB dengan demikian sisanya tinggal 0.1 MB jika kemudian dia mencoba untuk menyimpan file sebesar 0.4MB maka sistem akan menolaknya.</li><br>
+
+            <li><strong>Soft limit</strong> adalah batas yang bisa dilewati, namun hanya dalam periode tertentu, periode tersebut disebut dengan <strong>grace period</strong>, defaultnya nilai grace period adalah 7 hari, umumnya nilai hard limit lebih besar dari soft limit. untuk lebih jelas perhatikan contoh berikut, misalkan user optimus diberikan soft limit sebesar 10 MB, hard limit 15 MB, serta grace period 3 hari, jika user optimus sudah menggunkan kapasitas hard disk sebesar 12 MB maka nilai soft limitnya sudah terlewati, dengan demikian perhitungan grace period dimulai, jika dalam waktu 3 hari user optimus belum mengurangi penggunaan disknya sampai di bawah soft limit, maka dia tidak dapat menggunakan disk lagi walaupun nilai hard limitnya belum di capai, jika user optimus mengurangi batas penggunaan disknya sampai di bawah 10 MB maka nilai grace period kembali di reset ke 3</li>
+
+          <h4>4 macam utiliti pokok quota :</h4>
+            <li><strong><I>quota check :</I></strong> melakukan pengecekan pengecekan terhadap partisi yang menerapkan quota.</li>
+            <li><strong><I>quotaon :</I></strong> untuk mengaktifkan quota pada partisi yang bersangkutan.</li>
+            <li><strong><I>quotaoff :</I></strong> untuk mematikan quota.</li> 
+            <li><strong><I>repquota :</I></strong> untuk melaporkan status quota saat ini.</li> 
+
+          <h4>Beberapa configurasi quota :</h4>
+            <h5>Install quota :</h5>
+              <pre><strong>$ sudo apt-get install quota</strong></pre>
+
+            <h5>Membuat quota :</h5>
+              <p>kita masuk terlebih dahulu ke <strong>/etc/fstab</strong></p>
+              <pre><strong>$ sudo nano /etc/fstab</strong></pre>
+              <img src="img/quota2.png" alt="placeholder" data-action="zoom">
+
+              <p>Setelah itu kita tambahkan <strong>usrquota</strong> di opsi mount point <strong>/</strong>.</p>
+              <img src="img/quota1.png" alt="placeholder" data-action="zoom">
+
+            <p>Selanjutkan jalankan command berikut :</p>
+            <pre><strong>$ sudo quotacheck -cugm</strong></pre>
+
+            <p>Sekarang kita akan membuat quota,tapi sebelum itu kalian harus perhatikan <strong>user</strong> mana yang akan kalian beri kuota.saya disini memakai user <strong>haza</strong>.</p>
+            <pre><strong>$ sudo edquota haza</strong></pre>
+
+            <p>Setelah kita membuatnya maka akan muncul tampilan berikut,saya akan menambahkan har limit 100 MB dan soft limit 100 MB,disini quota dalam ukuran <strong>per bytes</strong>.</p>
+            <img src="img/quota3.png" alt="placeholder" data-action="zoom">
+
+            <p>Selanjutnya kita akan mengecek quota user yang kita buat dengan command berikut :</p>
+            <pre><strong>$ sudo quota haza</strong></pre>
+
+            <p>Jika kalian ingin mengecek secara keseluruhan maka kalian bisa mengikuti command berikut :</p>
+            <pre><strong>$ sudo repquota -a</strong></pre>
+
+            <p>Untuk mengatur settingan block dan inode kalian bisa ikuti command berikut :</p>
+            <pre><strong>$ sudo edquota -t</strong></pre>
+
+          <p>Semoga berhasil mencoba kawan.jika terjadi error atau hal lain maka bisa chat dengan admin lewat medsos dibawah.</p>
+
+       <h4>Referensi :</h4>
+              <li><a href="https://sarangpenyamun.wordpress.com/2008/05/22/disk-quota-di-linux/">https://sarangpenyamun.com</a></li>
+              
+        <h4><center>Terima Kasih</center></h4>
+             
+         </div>
+        </div>
+      </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+               <li class="list-inline-item">
+                <a href="https://www.facebook.com/mikel.uuppz">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://github.com/fesasabil">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+                <li class="list-inline-item">
+                <a href="https://www.instagram.com/sabili.feaslucu">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <p class="copyright text-muted">Copyright &copy; azzaid Website 2018</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/clean-blog.min.js"></script>
+
+  </body>
+
+</html>
