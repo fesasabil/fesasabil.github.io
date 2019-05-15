@@ -53,17 +53,17 @@
     </nav>
 
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('img/lara-valet.png')">
+    <header class="masthead" style="background-image: url('img/lara.jpg')">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="post-heading">
-              <h1>Mengenal Laravel valet linux</h1>
-              <h2 class="subheading">Mengenal dan menginstall laravel valet linux</h2>
+              <h1>Mengenal Laravel valet</h1>
+              <h2 class="subheading">Mengenal dan configurasi laravel valet linux</h2>
               <span class="meta">Posted by
                 <a href="#">azzaid</a>
-                on Mei 10, 2019</span>
+                on Mei 15, 2019</span>
             </div>
           </div>
         </div>
@@ -117,6 +117,89 @@
       <p>Secara default, Valet melayani proyek Anda menggunakan TLD <font color="red">.test</font>. Jika Anda ingin menggunakan domain lain, Anda dapat melakukannya menggunakan perintah <font color="red">valet domain tld-name</font>.</p>
 
       <p>Misalnya, jika Anda ingin menggunakan <font color="red">.app</font> alih-alih <font color="red">.test</font>, jalankan <font color="red">valet domain app</font> dan Valet akan mulai melayani proyek Anda di <font color="red">* .app</font> secara otomatis.</p>
+
+      <h4>Upgrading</h4>
+        <p>Anda dapat memperbarui instalasi Valet anda menggunakan perintah <font color="red">composer global update</font> diterminal anda.Setelah mengupgrade lebih baiknya anda menjalankan perintah <font color="red">vallet install</font> sehingga Valet dapat melakukan peningkatan tambahan ke file konfigurasi anda.</p>
+
+
+    <h3>Serving Sites</h3>
+      <p>Setelah valet terinstall dilocal anda,maka valet siap untuk dijalankan.Valet sudah menyiapkan 2 command agar mudah membantu anda dalam menjalankan valet.</p>
+
+      <h5>Command Park</h5>
+        <ul>
+          <li>Membuat folder baru dilocal anda dengan command <font color="red">mkdir ~/Sites.</font> Selanjutnya masuk ke dalam folder yang tadi kalian buat dan jalankan <font color="red">valet park.</font> Command ini akan mendaftarkan direktori kerja Anda saat ini sebagai jalur yang harus dicari oleh Valet untuk situs-situsnya.</li>
+
+          <li>Selanjutnya, buat Laravel baru dalam direktori ini dengan command berikut : <font color="red">laravel new blog.</font></li>
+
+          <li>Untuk memeriksanya anda dapat membuka <font color="red">http: //blog.test</font> di browser Anda.</li>
+        </ul>
+
+      <h5>Command Link</h5>
+        <p>Command <font color="red">link</font> juga dapat digunakan untuk melayani situs Laravel Anda. Perintah ini berguna jika Anda ingin melayani satu situs dalam direktori dan bukan seluruh direktori.</p>
+        <ul>
+          <li>Untuk menggunakan command, navigasikan ke salah satu proyek Anda dan jalankan <font color="red">valet link app-name</font> di terminal Anda. Valet akan membuat tautan simbolik di <font color="red">~ / .valet / Sites</font> yang menunjuk ke direktori kerja Anda saat ini.</li>
+          
+          <li>Setelah menjalankan command <font color="red">link</font>, Anda dapat mengakses situs di browser Anda dengan <font color="red">http: //app-name.test.</font></li>
+        </ul>
+
+        <p>Untuk melihat daftar semua direktori Anda yang ditautkan, jalankan command <font color="red">valet links</font>. Anda dapat menggunakan <font color="red">valet unlink app-name</font> untuk menghancurkan tautan simbolik.</p>
+
+      <h5>Mengubah TLD domain</h5>
+      	<p>Setelah instalasi semua valet selesai maka akan diberi TLD <font color="red">.test</font>, jadi jika Anda memiliki folder dengan nama <font color="red">foo</font>, URL itu akan memiliki URL <font color="red"> foo.test</font>.<br><br>
+
+      	Jika Anda ingin mengubah TLD untuk semua situs valet Anda, gunakan perintah <font color="red">domain</font>.<br><br>
+
+      	Untuk mengubah TLD domain menjadi .app cukup jalankan :
+      	</p>
+      	<pre><strong>valet domain .app</strong></pre>
+
+      	<p>Untuk melihat TLD saat ini ditugaskan, jalankan saja perintah tanpa opsi :</p>
+      	<pre><strong>valet domain</strong></pre>
+
+      <h4>Perintah Valet Lainnya</h4>
+      	<table border="1" cellpadding="10" cellspacing="0">
+      		<tr>
+      			<th>Command</th>
+      			<th>Description</th>
+      		</tr>
+
+			<tr>   
+      			<td><font color="red">valet forget</font></td>
+      			<td>Hapus direktori "parkir" dari daftar.</td>
+      		</tr>
+
+			<tr>   
+      			<td><font color="red">valet paths</font></td>
+      			<td>Lihat semua jalur "parkir" Anda.</td>
+      		</tr>
+
+      		<tr>   
+      			<td><font color="red">valet restart	</font></td>
+      			<td>Mulai ulang layanan Valet.</td>
+      		</tr>
+
+      		<tr>   
+      			<td><font color="red">valet start</font></td>
+      			<td>Mulai layanan Valet.</td>
+      		</tr>
+
+      		<tr>   
+      			<td><font color="red">valet stop</font></td>
+      			<td>Hentikan layanan Valet.</td>
+      		</tr>
+
+      		<tr>   
+      			<td><font color="red">valet status</font></td>
+      			<td>Lihat status layanan Valet.</td>
+      		</tr>
+
+      		<tr>   
+      			<td><font color="red">valet uninstall</font></td>
+      			<td>uninstall sepenuhnya layanan Valet.</td>
+      		</tr>
+      	</table>
+
+      	<br>
 
        <h4>Referensi :</h4>
               <li><a href="https://cpriego.github.io/valet-linux/#custom-valet-drivers">https://cpriego.github.io</a></li>
