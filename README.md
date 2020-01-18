@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # [Start Bootstrap - Clean Blog](https://startbootstrap.com/template-overviews/clean-blog/)
 
 [Clean Blog](http://startbootstrap.com/template-overviews/clean-blog/) is a stylish, responsive blog theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/). This theme features a blog homepage, about page, contact page, and an example post page along with a working PHP contact form.
@@ -75,4 +74,3 @@ Start Bootstrap is based on the [Bootstrap](http://getbootstrap.com/) framework 
 Copyright 2013-2018 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-clean-blog/blob/gh-pages/LICENSE) license.
 =======
 # fesasabil.github.io
->>>>>>> c9832b1b8afac6596d891632a5fba56a91b41b0f
